@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Soccer Training Session | Coach Zach</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .booking-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .booking-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .form-section h3 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+        }
+        
+        .session-type-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .session-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .session-card:hover {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+        
+        .session-card.selected {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+        
+        .session-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #16a34a;
+        }
+        
+        .session-card p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .session-card .price {
+            font-weight: 600;
+            color: #16a34a;
+            font-size: 1.125rem;
+        }
+        
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .time-slot {
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-slot:hover {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+        
+        .time-slot.selected {
+            border-color: #16a34a;
+            background: #16a34a;
+            color: white;
+        }
+        
+        .time-slot.unavailable {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        .summary {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary h4 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-total {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .session-type-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .availability-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-form-container">
+        <div class="booking-form">
+            <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">Book Your Soccer Training Session</h2>
+            
+            <form id="bookingForm">
+                <!-- Player Information -->
+                <div class="form-section">
+                    <h3>Player Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="playerName">Player Name *</label>
+                            <input type="text" id="playerName" name="playerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="playerAge">Player Age *</label>
+                            <input type="number" id="playerAge" name="playerAge" min="5" max="17" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parent Information -->
+                <div class="form-section">
+                    <h3>Parent Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentName">Parent Name *</label>
+                            <input type="text" id="parentName" name="parentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentEmail">Parent Email *</label>
+                            <input type="email" id="parentEmail" name="parentEmail" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Session Type -->
+                <div class="form-section">
+                    <h3>Session Type</h3>
+                    <div class="session-type-cards">
+                        <div class="session-card" data-type="1on1">
+                            <h4>1-on-1 Training</h4>
+                            <p>Personalized individual session</p>
+                            <p><strong>Duration:</strong> 60 minutes</p>
+                            <p class="price">$75</p>
+                        </div>
+                        <div class="session-card" data-type="group">
+                            <h4>Small Group Training</h4>
+                            <p>Group session with 2-5 players</p>
+                            <p><strong>Duration:</strong> 90 minutes</p>
+                            <p class="price">$50</p>
+                        </div>
+                        <div class="session-card" data-type="assessment">
+                            <h4>Skill Assessment</h4>
+                            <p>Comprehensive evaluation</p>
+                            <p><strong>Duration:</strong> 45 minutes</p>
+                            <p class="price">$60</p>
+                        </div>
+                    </div>
+                    <input type="hidden" id="sessionType" name="sessionType" required>
+                </div>
+                
+                <!-- Date and Time -->
+                <div class="form-section">
+                    <h3>Date and Time</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Select a date first</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="form-section">
+                    <h3>Location</h3>
+                    <div class="form-group">
+                        <label for="location">Preferred Location</label>
+                        <select id="location" name="location">
+                            <option value="">Coach will suggest based on availability</option>
+                            <option value="Gilbert">Gilbert</option>
+                            <option value="Queen Creek">Queen Creek</option>
+                            <option value="Chandler">Chandler</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Goals -->
+                <div class="form-section">
+                    <h3>Training Goals</h3>
+                    <div class="form-group">
+                        <label for="goals">What are your goals for this session?</label>
+                        <textarea id="goals" name="goals" rows="4" placeholder="Tell us about specific skills you want to work on, areas for improvement, or any other goals..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Summary -->
+                <div class="summary" id="summary" style="display: none;">
+                    <h4>Booking Summary</h4>
+                    <div class="summary-item">
+                        <span>Session Type:</span>
+                        <span id="summaryType">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Date:</span>
+                        <span id="summaryDate">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Time:</span>
+                        <span id="summaryTime">-</span>
+                    </div>
+                    <div class="summary-item summary-total">
+                        <span>Total:</span>
+                        <span id="summaryPrice">-</span>
+                    </div>
+                </div>
+                
+                <!-- Submit -->
+                <button type="submit" class="btn-primary btn-full">Book Session</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const sessionTypes = {
+            '1on1': { name: '1-on-1 Training', duration: 60, price: 75 },
+            'group': { name: 'Small Group Training', duration: 90, price: 50 },
+            'assessment': { name: 'Skill Assessment', duration: 45, price: 60 }
+        };
+
+        // Session type selection
+        document.querySelectorAll('.session-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.session-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('sessionType').value = this.dataset.type;
+                updateSummary();
+            });
+        });
+
+        // Date selection
+        document.getElementById('date').addEventListener('change', function() {
+            const date = new Date(this.value);
+            const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'lowercase' });
+            
+            // Fetch available slots for this day
+            fetch(`/api/booking?day=${dayOfWeek}`)
+                .then(response => response.json())
+                .then(data => {
+                    const timeSelect = document.getElementById('time');
+                    timeSelect.innerHTML = '<option value="">Select a time</option>';
+                    
+                    data.slots.forEach(slot => {
+                        const option = document.createElement('option');
+                        option.value = slot;
+                        option.textContent = slot;
+                        timeSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching slots:', error);
+                });
+        });
+
+        // Time selection
+        document.getElementById('time').addEventListener('change', updateSummary);
+
+        // Update summary
+        function updateSummary() {
+            const sessionType = document.getElementById('sessionType').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            
+            if (sessionType && date && time) {
+                const session = sessionTypes[sessionType];
+                const formattedDate = new Date(date).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                document.getElementById('summaryType').textContent = session.name;
+                document.getElementById('summaryDate').textContent = formattedDate;
+                document.getElementById('summaryTime').textContent = time;
+                document.getElementById('summaryPrice').textContent = `$${session.price}`;
+                
+                document.getElementById('summary').style.display = 'block';
+            } else {
+                document.getElementById('summary').style.display = 'none';
+            }
+        }
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Booking...';
+            submitButton.disabled = true;
+            
+            // Send booking request
+            fetch('/api/booking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.message === 'Session booked successfully') {
+                    alert('Session booked successfully! You will receive a confirmation email shortly.');
+                    this.reset();
+                    document.getElementById('summary').style.display = 'none';
+                    document.querySelectorAll('.session-card').forEach(c => c.classList.remove('selected'));
+                } else {
+                    throw new Error(result.message || 'Failed to book session');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Sorry, there was an error booking your session. Please try again or call us directly.');
+            })
+            .finally(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+    </script>
+</body>
+</html> 

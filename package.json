@@ -1,0 +1,27 @@
+{
+  "name": "coach-zach-soccer-training",
+  "version": "1.0.0",
+  "description": "Coach Zach Soccer Training Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "resend": "^3.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "keywords": [
+    "soccer",
+    "training",
+    "coaching",
+    "gilbert",
+    "queen-creek",
+    "chandler"
+  ],
+  "author": "Coach Zach",
+  "license": "UNLICENSED"
+} 

@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 // Create Gmail transporter
 function createTransporter() {
-    return nodemailer.createTransport({
+    return nodemailer.createTransporter({
         service: 'gmail',
         auth: {
             user: process.env.GMAIL_USER,

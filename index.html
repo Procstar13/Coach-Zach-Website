@@ -244,10 +244,23 @@
                     
                     <!-- Calendly inline widget -->
                     <div class="calendly-inline-widget" 
-                         data-url="https://calendly.com/ztproctor/soccer-training" 
+                         data-url="https://calendly.com/ztproctor" 
                          style="min-width:320px;height:700px;">
                     </div>
                     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    
+                    <!-- Fallback if Calendly not set up -->
+                    <div id="calendly-fallback" style="display: none; text-align: center; padding: 2rem; background: #f9fafb; border-radius: 8px; margin: 1rem 0;">
+                        <h4>Booking Calendar Setup Required</h4>
+                        <p>To enable online booking, please set up your Calendly account:</p>
+                        <ol style="text-align: left; max-width: 400px; margin: 1rem auto;">
+                            <li>Go to <a href="https://calendly.com" target="_blank">calendly.com</a></li>
+                            <li>Create account with: <strong>ztproctor@gmail.com</strong></li>
+                            <li>Set up event types for your training sessions</li>
+                            <li>Refresh this page once complete</li>
+                        </ol>
+                        <p><strong>Or contact directly:</strong> <a href="mailto:ztproctor@gmail.com">ztproctor@gmail.com</a> | <a href="tel:+14802380040">(480) 238-0040</a></p>
+                    </div>
                     
                     <div class="booking-info">
                         <h4>Session Types Available:</h4>

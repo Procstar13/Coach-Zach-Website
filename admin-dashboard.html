@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Coach Zach Soccer Training</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 1rem;
+        }
+        
+        .admin-nav button {
+            background: none;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-nav button.active {
+            background: #16a34a;
+            color: white;
+        }
+        
+        .admin-nav button:hover:not(.active) {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+        
+        .admin-section {
+            display: none;
+        }
+        
+        .admin-section.active {
+            display: block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .data-table th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .data-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .status-scheduled { background: #dbeafe; color: #1e40af; }
+        .status-completed { background: #d1fae5; color: #065f46; }
+        .status-cancelled { background: #fee2e2; color: #991b1b; }
+        .status-no-show { background: #fef3c7; color: #92400e; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card h3 {
+            color: #6b7280;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #16a34a;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+        
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Coach Zach Soccer Training - Admin Dashboard</h1>
+            <p>Manage customers, players, sessions, and payments</p>
+        </div>
+        
+        <div class="admin-nav">
+            <button class="active" onclick="showSection('overview')">Overview</button>
+            <button onclick="showSection('customers')">Customers</button>
+            <button onclick="showSection('players')">Players</button>
+            <button onclick="showSection('sessions')">Sessions</button>
+            <button onclick="showSection('payments')">Payments</button>
+        </div>
+        
+        <!-- Overview Section -->
+        <div id="overview" class="admin-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Customers</h3>
+                    <div class="stat-value" id="total-customers">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Players</h3>
+                    <div class="stat-value" id="total-players">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Sessions This Month</h3>
+                    <div class="stat-value" id="sessions-month">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Revenue This Month</h3>
+                    <div class="stat-value" id="revenue-month">-</div>
+                </div>
+            </div>
+            
+            <h2>Recent Sessions</h2>
+            <div id="recent-sessions" class="loading">Loading...</div>
+        </div>
+        
+        <!-- Customers Section -->
+        <div id="customers" class="admin-section">
+            <h2>Customers</h2>
+            <div id="customers-table" class="loading">Loading...</div>
+        </div>
+        
+        <!-- Players Section -->
+        <div id="players" class="admin-section">
+            <h2>Players</h2>
+            <div id="players-table" class="loading">Loading...</div>
+        </div>
+        
+        <!-- Sessions Section -->
+        <div id="sessions" class="admin-section">
+            <h2>Sessions</h2>
+            <div id="sessions-table" class="loading">Loading...</div>
+        </div>
+        
+        <!-- Payments Section -->
+        <div id="payments" class="admin-section">
+            <h2>Payments</h2>
+            <div id="payments-table" class="loading">Loading...</div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseUrl = 'YOUR_SUPABASE_URL';
+        const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update nav buttons
+            document.querySelectorAll('.admin-nav button').forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Load section data
+            loadSectionData(sectionId);
+        }
+        
+        // Load data for each section
+        async function loadSectionData(section) {
+            try {
+                switch(section) {
+                    case 'overview':
+                        await loadOverview();
+                        break;
+                    case 'customers':
+                        await loadCustomers();
+                        break;
+                    case 'players':
+                        await loadPlayers();
+                        break;
+                    case 'sessions':
+                        await loadSessions();
+                        break;
+                    case 'payments':
+                        await loadPayments();
+                        break;
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+                showError(`Failed to load ${section} data`);
+            }
+        }
+        
+        // Load overview statistics
+        async function loadOverview() {
+            // Load customer count
+            const { count: customerCount } = await supabase
+                .from('customers')
+                .select('*', { count: 'exact', head: true });
+            
+            // Load player count
+            const { count: playerCount } = await supabase
+                .from('players')
+                .select('*', { count: 'exact', head: true });
+            
+            // Load sessions this month
+            const startOfMonth = new Date();
+            startOfMonth.setDate(1);
+            startOfMonth.setHours(0, 0, 0, 0);
+            
+            const { data: sessionsThisMonth } = await supabase
+                .from('sessions')
+                .select('*')
+                .gte('date', startOfMonth.toISOString().split('T')[0]);
+            
+            // Calculate revenue
+            const revenue = sessionsThisMonth
+                .filter(s => s.status === 'completed')
+                .reduce((sum, session) => sum + parseFloat(session.price), 0);
+            
+            // Update UI
+            document.getElementById('total-customers').textContent = customerCount || 0;
+            document.getElementById('total-players').textContent = playerCount || 0;
+            document.getElementById('sessions-month').textContent = sessionsThisMonth?.length || 0;
+            document.getElementById('revenue-month').textContent = `$${revenue.toFixed(2)}`;
+            
+            // Load recent sessions
+            const { data: recentSessions } = await supabase
+                .from('session_summary')
+                .select('*')
+                .order('date', { ascending: false })
+                .limit(10);
+            
+            displayRecentSessions(recentSessions);
+        }
+        
+        // Display recent sessions
+        function displayRecentSessions(sessions) {
+            const container = document.getElementById('recent-sessions');
+            
+            if (!sessions || sessions.length === 0) {
+                container.innerHTML = '<p>No sessions found</p>';
+                return;
+            }
+            
+            const table = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Player</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${sessions.map(session => `
+                            <tr>
+                                <td>${new Date(session.date).toLocaleDateString()}</td>
+                                <td>${session.player_name}</td>
+                                <td>${session.session_type}</td>
+                                <td><span class="status-badge status-${session.status}">${session.status}</span></td>
+                                <td>${session.payment_status}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = table;
+        }
+        
+        // Load customers
+        async function loadCustomers() {
+            const { data: customers } = await supabase
+                .from('customer_summary')
+                .select('*')
+                .order('parent_name');
+            
+            displayCustomers(customers);
+        }
+        
+        // Display customers
+        function displayCustomers(customers) {
+            const container = document.getElementById('customers-table');
+            
+            if (!customers || customers.length === 0) {
+                container.innerHTML = '<p>No customers found</p>';
+                return;
+            }
+            
+            const table = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Parent Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Players</th>
+                            <th>Total Sessions</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${customers.map(customer => `
+                            <tr>
+                                <td>${customer.parent_name}</td>
+                                <td>${customer.parent_email}</td>
+                                <td>${customer.parent_phone || '-'}</td>
+                                <td>${customer.player_count}</td>
+                                <td>${customer.completed_sessions}</td>
+                                <td>$${customer.total_revenue?.toFixed(2) || '0.00'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = table;
+        }
+        
+        // Load players
+        async function loadPlayers() {
+            const { data: players } = await supabase
+                .from('players')
+                .select(`
+                    *,
+                    customers(parent_name, parent_email)
+                `)
+                .order('name');
+            
+            displayPlayers(players);
+        }
+        
+        // Display players
+        function displayPlayers(players) {
+            const container = document.getElementById('players-table');
+            
+            if (!players || players.length === 0) {
+                container.innerHTML = '<p>No players found</p>';
+                return;
+            }
+            
+            const table = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Skill Level</th>
+                            <th>Parent</th>
+                            <th>Goals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${players.map(player => `
+                            <tr>
+                                <td>${player.name}</td>
+                                <td>${player.age}</td>
+                                <td>${player.skill_level || '-'}</td>
+                                <td>${player.customers?.parent_name || '-'}</td>
+                                <td>${player.goals || '-'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = table;
+        }
+        
+        // Load sessions
+        async function loadSessions() {
+            const { data: sessions } = await supabase
+                .from('session_summary')
+                .select('*')
+                .order('date', { ascending: false });
+            
+            displaySessions(sessions);
+        }
+        
+        // Display sessions
+        function displaySessions(sessions) {
+            const container = document.getElementById('sessions-table');
+            
+            if (!sessions || sessions.length === 0) {
+                container.innerHTML = '<p>No sessions found</p>';
+                return;
+            }
+            
+            const table = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Player</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Price</th>
+                            <th>Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${sessions.map(session => `
+                            <tr>
+                                <td>${new Date(session.date).toLocaleDateString()}</td>
+                                <td>${session.time}</td>
+                                <td>${session.player_name}</td>
+                                <td>${session.session_type}</td>
+                                <td><span class="status-badge status-${session.status}">${session.status}</span></td>
+                                <td>$${session.price}</td>
+                                <td>${session.payment_status}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = table;
+        }
+        
+        // Load payments
+        async function loadPayments() {
+            const { data: payments } = await supabase
+                .from('payments')
+                .select(`
+                    *,
+                    sessions(
+                        date,
+                        time,
+                        players(name, customers(parent_name))
+                    )
+                `)
+                .order('payment_date', { ascending: false });
+            
+            displayPayments(payments);
+        }
+        
+        // Display payments
+        function displayPayments(payments) {
+            const container = document.getElementById('payments-table');
+            
+            if (!payments || payments.length === 0) {
+                container.innerHTML = '<p>No payments found</p>';
+                return;
+            }
+            
+            const table = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Player</th>
+                            <th>Parent</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${payments.map(payment => `
+                            <tr>
+                                <td>${new Date(payment.payment_date).toLocaleDateString()}</td>
+                                <td>${payment.sessions?.players?.name || '-'}</td>
+                                <td>${payment.sessions?.players?.customers?.parent_name || '-'}</td>
+                                <td>$${payment.amount}</td>
+                                <td>${payment.payment_method || '-'}</td>
+                                <td><span class="status-badge status-${payment.status}">${payment.status}</span></td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = table;
+        }
+        
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            document.querySelector('.admin-container').insertBefore(errorDiv, document.querySelector('.admin-nav'));
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+        }
+        
+        // Load initial data
+        document.addEventListener('DOMContentLoaded', () => {
+            loadOverview();
+        });
+    </script>
+</body>
+</html> 

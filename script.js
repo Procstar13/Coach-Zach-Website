@@ -378,4 +378,18 @@ const animationCSS = `
 // Inject animation CSS
 const animationStyle = document.createElement('style');
 animationStyle.textContent = animationCSS;
-document.head.appendChild(animationStyle); 
+document.head.appendChild(animationStyle);
+
+// Calendly fallback detection
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if Calendly widget loads properly
+    setTimeout(() => {
+        const calendlyWidget = document.querySelector('.calendly-inline-widget iframe');
+        const fallback = document.getElementById('calendly-fallback');
+        
+        if (!calendlyWidget && fallback) {
+            // If no Calendly iframe is found after 3 seconds, show fallback
+            fallback.style.display = 'block';
+        }
+    }, 3000);
+}); 

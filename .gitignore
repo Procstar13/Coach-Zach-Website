@@ -4,12 +4,27 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment variables
+# Environment variables and API keys
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*
+*.env
+
+# API Keys and Secrets
+api-keys.txt
+secrets.json
+config.json
+credentials.json
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Resend API Key (if stored locally)
+resend-api-key.txt
 
 # Vercel
 .vercel
@@ -44,4 +59,19 @@ coverage/
 
 # Temporary folders
 tmp/
-temp/ 
+temp/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Local development files
+local/
+dev/
+test-data/
+
+# Sensitive documentation
+secrets.md
+api-keys.md
+*.secret 

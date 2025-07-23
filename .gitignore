@@ -23,8 +23,6 @@ credentials.json
 *.p12
 *.pfx
 
-# Resend API Key (if stored locally)
-resend-api-key.txt
 
 # Vercel
 .vercel

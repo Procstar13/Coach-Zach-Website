@@ -12,18 +12,9 @@
     {
       "src": "script.js",
       "use": "@vercel/static"
-    },
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
-  ],
+
 
 
   "headers": [
@@ -55,10 +46,6 @@
           "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://assets.calendly.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://calendly.com; frame-src https://calendly.com;"
         }
       ]
-    }
-  ],
-  "env": {
-    "GMAIL_USER": "",
-    "GMAIL_APP_PASSWORD": ""
-  }
+        }
+  ]
 } 

@@ -321,16 +321,11 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
-                    <!-- Honeypot field to catch bots -->
-                    <div class="honeypot-field" style="display: none;">
-                        <input type="text" name="website" tabindex="-1" autocomplete="off">
-                    </div>
-                    
+                <form class="contact-form" action="https://formspree.io/f/xpzgwqjq" method="POST" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Parent Name *</label>
-                            <input type="text" id="name" name="name" required maxlength="100" pattern="[A-Za-z\s]+" title="Please enter a valid name (letters and spaces only)">
+                            <input type="text" id="name" name="name" required maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="email">Email *</label>
@@ -341,11 +336,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="playerName">Player Name *</label>
-                            <input type="text" id="playerName" name="playerName" required maxlength="100" pattern="[A-Za-z\s]+" title="Please enter a valid name (letters and spaces only)">
+                            <input type="text" id="playerName" name="playerName" required maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="playerAge">Player Age *</label>
-                            <input type="number" id="playerAge" name="playerAge" min="5" max="17" maxlength="2" required>
+                            <input type="number" id="playerAge" name="playerAge" min="5" max="17" required>
                         </div>
                     </div>
                     
@@ -353,10 +348,6 @@
                         <label for="message">Message / Goals</label>
                         <textarea id="message" name="message" rows="4" maxlength="1000" placeholder="Tell us about your goals, preferred session type, or any questions..."></textarea>
                     </div>
-                    
-                    <!-- Rate limiting and CSRF protection -->
-                    <input type="hidden" name="timestamp" id="timestamp">
-                    <input type="hidden" name="token" id="csrfToken">
                     
                     <button type="submit" class="btn-primary btn-full">Send Message</button>
                 </form>

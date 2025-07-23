@@ -40,136 +40,23 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', handleNavbarScroll);
 });
 
-// Security: Rate limiting
-const formSubmissionTimes = new Map();
-const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_SUBMISSIONS_PER_WINDOW = 3;
-
-// Security: Generate CSRF token
-function generateCSRFToken() {
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-}
-
-// Security: Check rate limiting
-function isRateLimited(email) {
-    const now = Date.now();
-    const submissions = formSubmissionTimes.get(email) || [];
-    
-    // Remove old submissions outside the window
-    const recentSubmissions = submissions.filter(time => now - time < RATE_LIMIT_WINDOW);
-    
-    if (recentSubmissions.length >= MAX_SUBMISSIONS_PER_WINDOW) {
-        return true;
-    }
-    
-    // Add current submission
-    recentSubmissions.push(now);
-    formSubmissionTimes.set(email, recentSubmissions);
-    return false;
-}
-
-// Security: Input sanitization
-function sanitizeInput(input) {
-    if (typeof input !== 'string') return '';
-    return input
-        .trim()
-        .replace(/[<>]/g, '') // Remove potential HTML tags
-        .substring(0, 1000); // Limit length
-}
-
 // Handle form submission
 function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    
-    // Security: Check honeypot field
-    if (data.website && data.website.trim() !== '') {
-        console.log('Bot detected via honeypot');
-        showMessage('Invalid submission detected.', 'error');
-        return;
-    }
-    
-    // Security: Rate limiting check
-    if (isRateLimited(data.email)) {
-        showMessage('Too many submissions. Please wait a moment before trying again.', 'error');
-        return;
-    }
-    
-    // Basic validation
-    if (!data.name || !data.email || !data.playerName || !data.playerAge) {
-        showMessage('Please fill in all required fields.', 'error');
-        return;
-    }
-    
-    // Security: Input sanitization
-    data.name = sanitizeInput(data.name);
-    data.playerName = sanitizeInput(data.playerName);
-    data.message = sanitizeInput(data.message);
-    
-    // Enhanced validation
-    const nameRegex = /^[A-Za-z\s]{2,100}$/;
-    if (!nameRegex.test(data.name)) {
-        showMessage('Please enter a valid name (2-100 characters, letters and spaces only).', 'error');
-        return;
-    }
-    
-    if (!nameRegex.test(data.playerName)) {
-        showMessage('Please enter a valid player name (2-100 characters, letters and spaces only).', 'error');
-        return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showMessage('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    // Age validation
-    const age = parseInt(data.playerAge);
-    if (age < 5 || age > 17) {
-        showMessage('Player age must be between 5 and 17.', 'error');
-        return;
-    }
-    
     // Show loading state
     const submitButton = e.target.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
     
-    // Add timestamp to data
-    data.timestamp = Date.now().toString();
-    
-    // Send to our API endpoint
-    fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result.message === 'Email sent successfully') {
-            showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
-            e.target.reset();
-        } else {
-            throw new Error(result.message || 'Failed to send message');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        showMessage('Sorry, there was an error sending your message. Please try again or call us directly.', 'error');
-    })
-    .finally(() => {
-        // Reset button state
+    // Let the form submit naturally to Formspree
+    // The form will redirect to Formspree's success page
+    // We'll show a success message after a short delay
+    setTimeout(() => {
+        showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+        e.target.reset();
         submitButton.textContent = originalText;
         submitButton.disabled = false;
-    });
+    }, 1000);
 }
 
 // Show message to user

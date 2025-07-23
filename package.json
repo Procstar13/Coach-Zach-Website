@@ -10,8 +10,6 @@
     "start": "vercel dev"
   },
   "dependencies": {
-    "nodemailer": "^6.9.7",
-    "@supabase/supabase-js": "^2.38.0"
   },
   "devDependencies": {
     "vercel": "^32.0.0"

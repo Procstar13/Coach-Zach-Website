@@ -2,6 +2,7 @@
   "name": "coach-zach-soccer-training",
   "version": "1.0.0",
   "description": "Coach Zach Soccer Training Website",
+  "type": "module",
   "main": "index.html",
   "scripts": {
     "dev": "vercel dev",

@@ -141,6 +141,9 @@ function handleFormSubmit(e) {
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
     
+    // Add timestamp to data
+    data.timestamp = Date.now().toString();
+    
     // Send to our API endpoint
     fetch('/api/send-email', {
         method: 'POST',

@@ -227,6 +227,10 @@ export default async function handler(req, res) {
         res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Server error:', error);
+        console.error('Environment variables:', {
+            GMAIL_USER: process.env.GMAIL_USER ? 'SET' : 'NOT SET',
+            GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD ? 'SET' : 'NOT SET'
+        });
         res.status(500).json({ message: 'Internal server error' });
     }
 } 

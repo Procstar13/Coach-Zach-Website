@@ -24,11 +24,7 @@
       "destination": "/api/$1"
     }
   ],
-  "functions": {
-    "api/send-email.js": {
-      "maxDuration": 10
-    }
-  },
+
   "headers": [
     {
       "source": "/(.*)",

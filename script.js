@@ -42,21 +42,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Handle form submission
 function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    // Basic validation
+    if (!data.name || !data.email || !data.playerName || !data.playerAge) {
+        showMessage('Please fill in all required fields.', 'error');
+        return;
+    }
+    
     // Show loading state
     const submitButton = e.target.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
     
-    // Let the form submit naturally to Formspree
-    // The form will redirect to Formspree's success page
-    // We'll show a success message after a short delay
-    setTimeout(() => {
-        showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
-        e.target.reset();
+    // Send to our API endpoint
+    fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.message === 'Email sent successfully') {
+            showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
+            e.target.reset();
+        } else {
+            throw new Error(result.message || 'Failed to send message');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showMessage('Sorry, there was an error sending your message. Please try again or call us directly.', 'error');
+    })
+    .finally(() => {
+        // Reset button state
         submitButton.textContent = originalText;
         submitButton.disabled = false;
-    }, 1000);
+    });
 }
 
 // Show message to user

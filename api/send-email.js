@@ -1,15 +1,7 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-// Create Gmail transporter
-function createTransporter() {
-    return nodemailer.createTransporter({
-        service: 'gmail',
-        auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_APP_PASSWORD
-        }
-    });
-}
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
     // Only allow POST requests
@@ -18,15 +10,32 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { name, email, playerName, playerAge, message } = req.body;
+        // Handle both contact form and booking form field names
+        const { 
+            name, 
+            email, 
+            playerName, 
+            playerAge, 
+            message,
+            // Booking form fields
+            parentName,
+            parentEmail,
+            sessionType,
+            date,
+            time,
+            location,
+            goals
+        } = req.body;
+
+        // Use booking form fields if available, otherwise use contact form fields
+        const parentNameFinal = parentName || name;
+        const parentEmailFinal = parentEmail || email;
+        const messageFinal = goals || message;
 
         // Basic validation
-        if (!name || !email || !playerName || !playerAge) {
+        if (!parentNameFinal || !parentEmailFinal || !playerName || !playerAge) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
-
-        // Create transporter
-        const transporter = createTransporter();
 
         // Email content for Coach Zach
         const coachEmailHtml = `
@@ -35,16 +44,26 @@ export default async function handler(req, res) {
                 
                 <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
                     <h3 style="color: #374151; margin-top: 0;">Contact Information</h3>
-                    <p><strong>Parent Name:</strong> ${name}</p>
-                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Parent Name:</strong> ${parentNameFinal}</p>
+                    <p><strong>Email:</strong> ${parentEmailFinal}</p>
                     <p><strong>Player Name:</strong> ${playerName}</p>
                     <p><strong>Player Age:</strong> ${playerAge}</p>
                 </div>
                 
-                ${message ? `
+                ${sessionType ? `
+                    <div style="background: #e0f2fe; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h3 style="color: #374151; margin-top: 0;">Session Details</h3>
+                        <p><strong>Session Type:</strong> ${sessionType}</p>
+                        ${date ? `<p><strong>Preferred Date:</strong> ${date}</p>` : ''}
+                        ${time ? `<p><strong>Preferred Time:</strong> ${time}</p>` : ''}
+                        ${location ? `<p><strong>Preferred Location:</strong> ${location}</p>` : ''}
+                    </div>
+                ` : ''}
+                
+                ${messageFinal ? `
                     <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin: 20px 0;">
                         <h3 style="color: #374151; margin-top: 0;">Message / Goals</h3>
-                        <p style="white-space: pre-wrap;">${message}</p>
+                        <p style="white-space: pre-wrap;">${messageFinal}</p>
                     </div>
                 ` : ''}
                 
@@ -64,21 +83,21 @@ export default async function handler(req, res) {
         `;
 
         // Send email to Coach Zach
-        await transporter.sendMail({
-            from: `"Coach Zach" <${process.env.GMAIL_USER}>`,
+        await resend.emails.send({
+            from: 'Coach Zach <noreply@resend.dev>',
             to: 'ztproctor@gmail.com',
-            subject: `New Soccer Training Inquiry from ${name}`,
+            subject: sessionType ? `New Soccer Training Booking from ${parentNameFinal}` : `New Soccer Training Inquiry from ${parentNameFinal}`,
             html: coachEmailHtml
         });
 
         // Confirmation email content for parent
         const confirmationEmailHtml = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                <h2 style="color: #16a34a;">Thank you for your inquiry!</h2>
+                <h2 style="color: #16a34a;">${sessionType ? 'Thank you for your booking inquiry!' : 'Thank you for your inquiry!'}</h2>
                 
-                <p>Hi ${name},</p>
+                <p>Hi ${parentNameFinal},</p>
                 
-                <p>Thank you for reaching out about soccer training for ${playerName}. I've received your inquiry and will get back to you within 24 hours with more information about training programs and availability.</p>
+                <p>Thank you for reaching out about soccer training for ${playerName}. I've received your ${sessionType ? 'booking inquiry' : 'inquiry'} and will get back to you within 24 hours with more information about training programs and availability.</p>
                 
                 <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin: 20px 0;">
                     <h3 style="color: #374151; margin-top: 0;">What to expect next:</h3>
@@ -105,10 +124,10 @@ export default async function handler(req, res) {
         `;
 
         // Send confirmation email to parent
-        await transporter.sendMail({
-            from: `"Coach Zach" <${process.env.GMAIL_USER}>`,
-            to: email,
-            subject: 'Thank you for your soccer training inquiry',
+        await resend.emails.send({
+            from: 'Coach Zach <noreply@resend.dev>',
+            to: parentEmailFinal,
+            subject: sessionType ? 'Thank you for your soccer training booking inquiry' : 'Thank you for your soccer training inquiry',
             html: confirmationEmailHtml
         });
 

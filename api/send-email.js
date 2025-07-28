@@ -4,12 +4,20 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
+    // Add debugging
+    console.log('API endpoint called');
+    console.log('Method:', req.method);
+    console.log('API Key present:', !!process.env.RESEND_API_KEY);
+    
     // Only allow POST requests
     if (req.method !== 'POST') {
+        console.log('Method not allowed');
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
     try {
+        console.log('Request body:', req.body);
+        
         // Handle both contact form and booking form field names
         const { 
             name, 
@@ -32,10 +40,21 @@ export default async function handler(req, res) {
         const parentEmailFinal = parentEmail || email;
         const messageFinal = goals || message;
 
+        console.log('Processed data:', {
+            parentNameFinal,
+            parentEmailFinal,
+            playerName,
+            playerAge,
+            sessionType
+        });
+
         // Basic validation
         if (!parentNameFinal || !parentEmailFinal || !playerName || !playerAge) {
+            console.log('Validation failed - missing required fields');
             return res.status(400).json({ message: 'Missing required fields' });
         }
+
+        console.log('Validation passed, sending email...');
 
         // Email content for Coach Zach
         const coachEmailHtml = `
@@ -83,12 +102,14 @@ export default async function handler(req, res) {
         `;
 
         // Send email to Coach Zach
-        await resend.emails.send({
+        console.log('Sending email to Coach Zach...');
+        const coachEmailResult = await resend.emails.send({
             from: 'Coach Zach <noreply@resend.dev>',
             to: 'ztproctor@gmail.com',
             subject: sessionType ? `New Soccer Training Booking from ${parentNameFinal}` : `New Soccer Training Inquiry from ${parentNameFinal}`,
             html: coachEmailHtml
         });
+        console.log('Coach email result:', coachEmailResult);
 
         // Confirmation email content for parent
         const confirmationEmailHtml = `
@@ -124,13 +145,16 @@ export default async function handler(req, res) {
         `;
 
         // Send confirmation email to parent
-        await resend.emails.send({
+        console.log('Sending confirmation email to parent...');
+        const confirmationEmailResult = await resend.emails.send({
             from: 'Coach Zach <noreply@resend.dev>',
             to: parentEmailFinal,
             subject: sessionType ? 'Thank you for your soccer training booking inquiry' : 'Thank you for your soccer training inquiry',
             html: confirmationEmailHtml
         });
+        console.log('Confirmation email result:', confirmationEmailResult);
 
+        console.log('All emails sent successfully');
         res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Server error:', error);

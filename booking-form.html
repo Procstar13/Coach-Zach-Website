@@ -317,11 +317,17 @@
     </div>
 
     <script>
+        console.log('Booking form script loaded');
+        
         const sessionTypes = {
             '1on1': { name: '1-on-1 Training', duration: 60, price: 65 },
             'group': { name: 'Small Group Training', duration: 90, price: 50 },
             'assessment': { name: 'Skill Assessment', duration: 45, price: 50 }
         };
+
+        // Check if form exists
+        const bookingForm = document.getElementById('bookingForm');
+        console.log('Booking form found:', !!bookingForm);
 
         // Session type selection
         document.querySelectorAll('.session-card').forEach(card => {
@@ -443,6 +449,7 @@
         }
 
         // Form submission
+        console.log('About to attach form submission listener');
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -504,6 +511,14 @@
         // Set minimum date to today
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').min = today;
+        
+        // Test submit button click
+        const submitButton = document.querySelector('button[type="submit"]');
+        if (submitButton) {
+            submitButton.addEventListener('click', function() {
+                console.log('Submit button clicked');
+            });
+        }
     </script>
 </body>
 </html> 

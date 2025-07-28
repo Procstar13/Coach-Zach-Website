@@ -318,9 +318,9 @@
 
     <script>
         const sessionTypes = {
-            '1on1': { name: '1-on-1 Training', duration: 60, price: 75 },
+            '1on1': { name: '1-on-1 Training', duration: 60, price: 65 },
             'group': { name: 'Small Group Training', duration: 90, price: 50 },
-            'assessment': { name: 'Skill Assessment', duration: 45, price: 60 }
+            'assessment': { name: 'Skill Assessment', duration: 45, price: 50 }
         };
 
         // Session type selection
@@ -385,12 +385,75 @@
             }
         }
 
+        // Show message to user (same as contact form)
+        function showMessage(message, type = 'info') {
+            // Remove existing messages
+            const existingMessage = document.querySelector('.message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message message-${type}`;
+            messageDiv.textContent = message;
+            
+            // Style the message
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                max-width: 400px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            
+            // Set background color based on type
+            if (type === 'success') {
+                messageDiv.style.backgroundColor = '#16a34a';
+            } else if (type === 'error') {
+                messageDiv.style.backgroundColor = '#dc2626';
+            } else {
+                messageDiv.style.backgroundColor = '#3b82f6';
+            }
+            
+            // Add to page
+            document.body.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.remove();
+                    }
+                }, 300);
+            }, 5000);
+        }
+
         // Form submission
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.playerName || !data.playerAge || !data.parentName || !data.parentEmail || !data.sessionType || !data.date || !data.time) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
             
             // Show loading state
             const submitButton = this.querySelector('button[type="submit"]');
@@ -409,7 +472,7 @@
             .then(response => response.json())
             .then(result => {
                 if (result.message === 'Email sent successfully') {
-                    alert('Session inquiry sent successfully! You will receive a confirmation email shortly.');
+                    showMessage('Session inquiry sent successfully! You will receive a confirmation email shortly.', 'success');
                     this.reset();
                     document.getElementById('summary').style.display = 'none';
                     document.querySelectorAll('.session-card').forEach(c => c.classList.remove('selected'));
@@ -419,7 +482,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Sorry, there was an error booking your session. Please try again or call us directly.');
+                showMessage('Sorry, there was an error booking your session. Please try again or call us directly.', 'error');
             })
             .finally(() => {
                 submitButton.textContent = originalText;

@@ -43,6 +43,30 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Contact form submit button found');
             submitButton.addEventListener('click', function() {
                 console.log('Contact form submit button clicked');
+                
+                // Check form validation state
+                console.log('Form valid:', contactForm.checkValidity());
+                console.log('Form validation message:', contactForm.validationMessage);
+                
+                // Check individual field values
+                const nameField = contactForm.querySelector('#name');
+                const emailField = contactForm.querySelector('#email');
+                const playerNameField = contactForm.querySelector('#playerName');
+                const playerAgeField = contactForm.querySelector('#playerAge');
+                
+                console.log('Field values:', {
+                    name: nameField?.value,
+                    email: emailField?.value,
+                    playerName: playerNameField?.value,
+                    playerAge: playerAgeField?.value
+                });
+                
+                console.log('Field validity:', {
+                    name: nameField?.validity?.valid,
+                    email: emailField?.validity?.valid,
+                    playerName: playerNameField?.validity?.valid,
+                    playerAge: playerAgeField?.validity?.valid
+                });
             });
         } else {
             console.log('Contact form submit button not found');

@@ -36,6 +36,26 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         console.log('Attaching contact form submit listener');
         contactForm.addEventListener('submit', handleFormSubmit);
+        
+        // Also add click listener to submit button for debugging
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        if (submitButton) {
+            console.log('Contact form submit button found');
+            submitButton.addEventListener('click', function() {
+                console.log('Contact form submit button clicked');
+            });
+        } else {
+            console.log('Contact form submit button not found');
+        }
+        
+        // Test form submission handler manually
+        console.log('Testing form submission handler...');
+        const testEvent = { preventDefault: () => console.log('preventDefault called') };
+        const testForm = { 
+            target: contactForm,
+            querySelector: (selector) => contactForm.querySelector(selector)
+        };
+        console.log('Form submission handler test completed');
     } else {
         console.log('Contact form not found!');
     }

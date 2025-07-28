@@ -32,8 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form handling
     const contactForm = document.getElementById('contactForm');
+    console.log('Contact form found:', !!contactForm);
     if (contactForm) {
+        console.log('Attaching contact form submit listener');
         contactForm.addEventListener('submit', handleFormSubmit);
+    } else {
+        console.log('Contact form not found!');
     }
     
     // Add scroll effect to navbar
@@ -44,15 +48,22 @@ document.addEventListener('DOMContentLoaded', function() {
 function handleFormSubmit(e) {
     e.preventDefault();
     
+    console.log('Contact form submission started');
+    
     // Get form data
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     
+    console.log('Contact form data:', data);
+    
     // Basic validation
     if (!data.name || !data.email || !data.playerName || !data.playerAge) {
+        console.log('Contact form validation failed - missing required fields');
         showMessage('Please fill in all required fields.', 'error');
         return;
     }
+    
+    console.log('Contact form validation passed, sending request to /api/send-email');
     
     // Show loading state
     const submitButton = e.target.querySelector('button[type="submit"]');
@@ -68,8 +79,12 @@ function handleFormSubmit(e) {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Contact form response received:', response.status, response.statusText);
+        return response.json();
+    })
     .then(result => {
+        console.log('Contact form response data:', result);
         if (result.message === 'Email sent successfully') {
             showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
             e.target.reset();
@@ -78,7 +93,7 @@ function handleFormSubmit(e) {
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Contact form error:', error);
         showMessage('Sorry, there was an error sending your message. Please try again or call us directly.', 'error');
     })
     .finally(() => {

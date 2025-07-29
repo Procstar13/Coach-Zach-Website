@@ -21,7 +21,7 @@ This website implements multiple layers of security to protect against common th
 #### Input Validation & Sanitization
 - **Name validation**: Letters and spaces only, 2-100 characters
 - **Email validation**: Standard email format, max 254 characters
-- **Age validation**: Numbers only, 5-17 range
+- **Age validation**: Numbers only, 3-99 range (all ages welcome)
 - **Message sanitization**: Removes HTML tags, limits to 1000 characters
 
 #### Suspicious Content Detection

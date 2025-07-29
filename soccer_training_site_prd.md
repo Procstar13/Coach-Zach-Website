@@ -27,7 +27,7 @@ A simple, SEO-optimized, mobile-first landing page for booking private soccer tr
 ### ✅ Homepage (One-Page Layout)
 #### Hero Section
 - H1: **Private Soccer Training in [Your City]**
-- Subhead: *1-on-1 and small group sessions for ages [X–Y]. Improve skills, confidence, and game performance.*
+- Subhead: *1-on-1 and small group sessions for all ages. Improve skills, confidence, and game performance.*
 - CTA Button → Scrolls to booking
 
 #### About the Trainer
@@ -42,7 +42,7 @@ A simple, SEO-optimized, mobile-first landing page for booking private soccer tr
 - Pricing: *Add later or "Pricing available on request"*
 
 #### Testimonials
-- At least one sample: *“Coach Zach helped my son boost his game IQ and confidence.”*
+- At least one sample: *"Coach Zach helped my child boost their game IQ and confidence."*
 
 #### Booking Calendar
 - Embed Calendly or TidyCal widget

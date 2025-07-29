@@ -118,7 +118,7 @@ function handleFormSubmit(e) {
         return;
     }
     
-    console.log('Contact form validation passed, sending request to /api/send-email');
+    console.log('Contact form validation passed, sending request to /api/contact');
     
     // Show loading state
     const submitButton = e.target.querySelector('button[type="submit"]');
@@ -127,7 +127,7 @@ function handleFormSubmit(e) {
     submitButton.disabled = true;
     
     // Send to our API endpoint
-    fetch('/api/send-email', {
+    fetch('/api/contact', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -140,11 +140,11 @@ function handleFormSubmit(e) {
     })
     .then(result => {
         console.log('Contact form response data:', result);
-        if (result.message === 'Email sent successfully') {
+        if (result.success) {
             showMessage('Thank you for your message! We will get back to you within 24 hours.', 'success');
             e.target.reset();
         } else {
-            throw new Error(result.message || 'Failed to send message');
+            throw new Error(result.error || 'Failed to send message');
         }
     })
     .catch(error => {

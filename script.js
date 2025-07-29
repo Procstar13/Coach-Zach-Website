@@ -67,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     playerName: playerNameField?.validity?.valid,
                     playerAge: playerAgeField?.validity?.valid
                 });
+                
+                // Test form submission manually if form is valid
+                if (contactForm.checkValidity()) {
+                    console.log('Form is valid, testing manual submission...');
+                    // Create a fake event to test our handler
+                    const fakeEvent = {
+                        preventDefault: () => console.log('preventDefault called'),
+                        target: contactForm
+                    };
+                    handleFormSubmit(fakeEvent);
+                }
             });
         } else {
             console.log('Contact form submit button not found');

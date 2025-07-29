@@ -1,9 +1,9 @@
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+const sendEmailHandler = async (req, res) => {
     // Add debugging
     console.log('API endpoint called');
     console.log('Method:', req.method);
@@ -160,4 +160,6 @@ export default async function handler(req, res) {
         console.error('Server error:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
-} 
+};
+
+module.exports = sendEmailHandler; 

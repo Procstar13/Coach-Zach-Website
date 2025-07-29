@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+const testHandler = async (req, res) => {
     console.log('Test API endpoint called');
     
     return res.status(200).json({ 
@@ -6,4 +6,6 @@ export default async function handler(req, res) {
         timestamp: new Date().toISOString(),
         method: req.method
     });
-}
+};
+
+module.exports = testHandler;

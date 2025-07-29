@@ -300,6 +300,43 @@ body {
     left: 0;
 }
 
+.service-price {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.service-price .original-price {
+    display: block;
+    font-size: 1.125rem;
+    color: #9ca3af;
+    text-decoration: line-through;
+    margin-bottom: 0.25rem;
+}
+
+.service-price .price {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 0.25rem;
+}
+
+.service-price .savings {
+    display: block;
+    font-size: 0.875rem;
+    color: #059669;
+    font-weight: 600;
+}
+
+.service-price .duration {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
 .pricing-cta {
     text-align: center;
 }

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Soccer Training Session - Gilbert, Queen Creek, Chandler | Coach Zach</title>
+    <meta name="description" content="Book your soccer training session with Coach Zach in Gilbert, Queen Creek, and Chandler, Arizona. Choose from 1-on-1 training, group sessions, or training packages for all ages.">
+    <meta name="keywords" content="book soccer training, soccer lessons Gilbert, soccer coaching Queen Creek, soccer training Chandler, schedule soccer session">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Book Soccer Training Session - Gilbert, Queen Creek, Chandler | Coach Zach">
+    <meta property="og:description" content="Book your soccer training session with Coach Zach. Choose from 1-on-1 training, group sessions, or training packages in Gilbert, Queen Creek, and Chandler.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Soccer Training Booking",
+        "description": "Book soccer training sessions with Coach Zach in Gilbert, Queen Creek, and Chandler, Arizona",
+        "provider": {
+            "@type": "Person",
+            "name": "Coach Zach"
+        },
+        "serviceType": "Soccer Training",
+        "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "33.3528",
+                "longitude": "-111.7890"
+            },
+            "geoRadius": "20000"
+        },
+        "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://calendly.com/ztproctor"
+        }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Coach Zach</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="book-now.html" class="nav-link active">Book Now</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Book Your <span class="highlight">Training Session</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Ready to take your game to the next level? Choose your preferred session type and schedule your training today.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('booking')">
+                        Schedule Now
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='services.html'">
+                        View Services
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Session Types Section -->
+    <section class="session-types">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Session Types</h2>
+                <p class="section-subtitle">
+                    Choose the training option that best fits your goals and schedule.
+                </p>
+            </div>
+            
+            <div class="session-types-grid">
+                <div class="session-type-card">
+                    <h3>1-on-1 Training</h3>
+                    <p>Personalized individual session focused on your specific needs and goals.</p>
+                    <div class="session-details">
+                        <div class="detail-item">
+                            <span class="label">Duration:</span>
+                            <span class="value">60 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Price:</span>
+                            <span class="value">$75</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Focus:</span>
+                            <span class="value">Individual skills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-type-card">
+                    <h3>Small Group Training</h3>
+                    <p>Group session with 2-5 players, perfect for friends or teammates.</p>
+                    <div class="session-details">
+                        <div class="detail-item">
+                            <span class="label">Duration:</span>
+                            <span class="value">90 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Price:</span>
+                            <span class="value">$50 per player</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Focus:</span>
+                            <span class="value">Team dynamics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-type-card">
+                    <h3>Skill Assessment</h3>
+                    <p>Comprehensive evaluation of current abilities with detailed feedback.</p>
+                    <div class="session-details">
+                        <div class="detail-item">
+                            <span class="label">Duration:</span>
+                            <span class="value">45 minutes</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Price:</span>
+                            <span class="value">$60</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Focus:</span>
+                            <span class="value">Evaluation & feedback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Packages Section -->
+    <section class="packages-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Training Packages</h2>
+                <p class="section-subtitle">
+                    Save money and commit to your development with our training packages.
+                </p>
+            </div>
+            
+            <div class="packages-overview-grid">
+                <div class="package-overview-card">
+                    <h3>6-Pack of Lessons</h3>
+                    <div class="package-price">
+                        <span class="price">$400</span>
+                        <span class="original-price">$450</span>
+                        <span class="savings">Save $50</span>
+                    </div>
+                    <p>6 individual training sessions, 60 minutes each. Valid for 3 months.</p>
+                </div>
+
+                <div class="package-overview-card">
+                    <h3>10-Pack of Lessons</h3>
+                    <div class="package-price">
+                        <span class="price">$650</span>
+                        <span class="original-price">$750</span>
+                        <span class="savings">Save $100</span>
+                    </div>
+                    <p>10 individual training sessions, 60 minutes each. Valid for 6 months.</p>
+                </div>
+
+                <div class="package-overview-card">
+                    <h3>Group Training Package</h3>
+                    <div class="package-price">
+                        <span class="price">$300</span>
+                        <span class="original-price">$350</span>
+                        <span class="savings">Save $50</span>
+                    </div>
+                    <p>6 group training sessions, 90 minutes each. Valid for 3 months.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Schedule Your Session</h2>
+                <p class="section-subtitle">
+                    Choose your preferred time and session type. All sessions are customized to your player's needs.
+                </p>
+            </div>
+            
+            <div class="booking-card">
+                <div class="booking-content">
+                    <h3>Book Your Training Session</h3>
+                    <p>
+                        Use the calendar below to select your preferred date and time. You'll be able to choose your session type and provide any specific goals or requirements.
+                    </p>
+                    
+                    <!-- Calendly inline widget -->
+                    <div class="calendly-inline-widget" 
+                         data-url="https://calendly.com/ztproctor" 
+                         style="min-width:320px;height:700px;">
+                    </div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    
+                    <!-- Fallback if Calendly not set up -->
+                    <div id="calendly-fallback" style="display: none; text-align: center; padding: 2rem; background: #f9fafb; border-radius: 8px; margin: 1rem 0;">
+                        <h4>Booking Calendar Setup Required</h4>
+                        <p>To enable online booking, please set up your Calendly account:</p>
+                        <ol style="text-align: left; max-width: 400px; margin: 1rem auto;">
+                            <li>Go to <a href="https://calendly.com" target="_blank">calendly.com</a></li>
+                            <li>Create account with: <strong>ztproctor@gmail.com</strong></li>
+                            <li>Set up event types for your training sessions</li>
+                            <li>Refresh this page once complete</li>
+                        </ol>
+                        <p><strong>Or contact directly:</strong> <a href="mailto:ztproctor@gmail.com">ztproctor@gmail.com</a> | <a href="tel:+14802380040">(480) 238-0040</a></p>
+                    </div>
+                    
+                    <div class="booking-info">
+                        <h4>What to Expect</h4>
+                        <ul>
+                            <li>Confirmation email with session details</li>
+                            <li>Location information and directions</li>
+                            <li>What to bring and wear</li>
+                            <li>Contact information for questions</li>
+                        </ul>
+                        
+                        <h4>Service Areas</h4>
+                        <p>Gilbert, Queen Creek, Chandler, Arizona</p>
+                        
+                        <div style="margin-top: 2rem;">
+                            <p style="font-size: 0.875rem; color: #6b7280;">
+                                Use the calendar above to book your session directly, or contact us for custom arrangements.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">
+                    Common questions about booking and training sessions.
+                </p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What should I bring to my session?</h3>
+                    <p>Bring comfortable athletic clothing, soccer cleats or athletic shoes, water, and any specific equipment you'd like to work with. All training equipment is provided.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How far in advance should I book?</h3>
+                    <p>It's recommended to book at least 24-48 hours in advance to ensure availability. Weekend slots tend to fill up quickly.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What is your cancellation policy?</h3>
+                    <p>We require 24-hour notice for cancellations. Late cancellations may be subject to a fee. We understand emergencies happen and will work with you.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I reschedule my session?</h3>
+                    <p>Yes, you can reschedule your session up to 24 hours before the scheduled time through the booking calendar or by contacting us directly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Soccer Journey?</h2>
+                <p>
+                    Take the first step toward improving your skills and confidence on the field.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('booking')">
+                        Book Your Session
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='contact.html'">
+                        Have Questions?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Coach Zach</h3>
+                    <p>
+                        Private soccer training and coaching services in Gilbert, Queen Creek, and Chandler, Arizona.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p>Email: ztproctor@gmail.com</p>
+                        <p>Phone: (480) 238-0040</p>
+                        <p>Areas: Gilbert, Queen Creek, Chandler</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <p>1-on-1 Training</p>
+                        <p>Small Group Training</p>
+                        <p>Skill Assessment</p>
+                        <p>All Ages Welcome</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Coach Zach Soccer Training. Not affiliated with local soccer clubs or organizations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

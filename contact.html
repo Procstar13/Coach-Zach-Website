@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Coach Zach - Soccer Training in Gilbert, Queen Creek, Chandler, Arizona</title>
+    <meta name="description" content="Contact Coach Zach for soccer training in Gilbert, Queen Creek, and Chandler, Arizona. Get in touch for questions about training programs, pricing, or to schedule a session.">
+    <meta name="keywords" content="contact Coach Zach, soccer training Gilbert, soccer coach Queen Creek, soccer lessons Chandler, Arizona soccer training">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Contact Coach Zach - Soccer Training in Gilbert, Queen Creek, Chandler">
+    <meta property="og:description" content="Contact Coach Zach for soccer training in Gilbert, Queen Creek, and Chandler, Arizona. Get in touch for questions about training programs or to schedule a session.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Coach Zach",
+        "description": "Contact information for Coach Zach soccer training services",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Coach Zach",
+            "telephone": "+1-480-238-0040",
+            "email": "ztproctor@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Gilbert",
+                "addressRegion": "AZ",
+                "addressCountry": "US"
+            }
+        }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Coach Zach</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="book-now.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Get in <span class="highlight">Touch</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Have questions about training programs, pricing, or want to schedule a session? 
+                    I'm here to help you get started on your soccer journey.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('contact')">
+                        Send Message
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='book-now.html'">
+                        Book Session
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Information</h2>
+                <p class="section-subtitle">
+                    Multiple ways to get in touch. I typically respond within 24 hours.
+                </p>
+            </div>
+            
+            <div class="contact-info-grid">
+                <div class="contact-info-card">
+                    <h3>Email</h3>
+                    <p>For general inquiries, questions about training programs, or to discuss your goals.</p>
+                    <a href="mailto:ztproctor@gmail.com" class="contact-link">ztproctor@gmail.com</a>
+                    <p class="response-time">Response time: Within 24 hours</p>
+                </div>
+
+                <div class="contact-info-card">
+                    <h3>Phone</h3>
+                    <p>For urgent questions or to discuss training arrangements directly.</p>
+                    <a href="tel:+14802380040" class="contact-link">(480) 238-0040</a>
+                    <p class="response-time">Available: Mon-Sun, 8 AM - 8 PM</p>
+                </div>
+
+                <div class="contact-info-card">
+                    <h3>Service Areas</h3>
+                    <p>I provide training services in the following areas of Arizona.</p>
+                    <div class="service-areas">
+                        <span class="area">Gilbert</span>
+                        <span class="area">Queen Creek</span>
+                        <span class="area">Chandler</span>
+                    </div>
+                    <p class="response-time">Travel within 20-mile radius</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Send a Message</h2>
+                <p class="section-subtitle">
+                    Fill out the form below and I'll get back to you with personalized information about training options.
+                </p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Parent Name *</label>
+                                <input type="text" id="name" name="name" required maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required maxlength="254">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="playerName">Player Name *</label>
+                                <input type="text" id="playerName" name="playerName" required maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="playerAge">Player Age *</label>
+                                <input type="number" id="playerAge" name="playerAge" min="3" max="99" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sessionType">Interested In</label>
+                            <select id="sessionType" name="sessionType">
+                                <option value="">Select an option</option>
+                                <option value="1-on-1 Training">1-on-1 Training</option>
+                                <option value="Small Group Training">Small Group Training</option>
+                                <option value="Skill Assessment">Skill Assessment</option>
+                                <option value="6-Pack Package">6-Pack Package</option>
+                                <option value="10-Pack Package">10-Pack Package</option>
+                                <option value="Group Package">Group Package</option>
+                                <option value="Not Sure">Not Sure - Need Guidance</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Preferred Location</label>
+                            <select id="location" name="location">
+                                <option value="">Select an area</option>
+                                <option value="Gilbert">Gilbert</option>
+                                <option value="Queen Creek">Queen Creek</option>
+                                <option value="Chandler">Chandler</option>
+                                <option value="Other">Other (specify in message)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message / Goals</label>
+                            <textarea id="message" name="message" rows="4" maxlength="1000" placeholder="Tell us about your goals, preferred session type, or any questions you have..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-sidebar">
+                    <div class="contact-sidebar-content">
+                        <h3>What to Include</h3>
+                        <p>To help me provide the most relevant information, consider mentioning:</p>
+                        <ul>
+                            <li>Player's current skill level</li>
+                            <li>Specific areas for improvement</li>
+                            <li>Preferred training schedule</li>
+                            <li>Any special requirements</li>
+                            <li>Questions about pricing or packages</li>
+                        </ul>
+                        
+                        <h3>Response Time</h3>
+                        <p>I typically respond to all inquiries within 24 hours, often much sooner. For urgent matters, please call directly.</p>
+                        
+                        <h3>Next Steps</h3>
+                        <p>After receiving your message, I'll:</p>
+                        <ol>
+                            <li>Review your requirements</li>
+                            <li>Recommend the best training approach</li>
+                            <li>Provide pricing information</li>
+                            <li>Help you schedule your first session</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">
+                    Common questions about contacting and working with Coach Zach.
+                </p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How quickly do you respond to messages?</h3>
+                    <p>I typically respond to all inquiries within 24 hours, often much sooner. For urgent questions, calling is the fastest way to reach me.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What information should I provide when contacting you?</h3>
+                    <p>Include the player's name, age, current skill level, goals, and any specific areas they want to improve. This helps me provide personalized recommendations.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Do you travel to different locations?</h3>
+                    <p>Yes, I provide training services in Gilbert, Queen Creek, and Chandler, Arizona. I can travel within a 20-mile radius of these areas.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I schedule a consultation before booking?</h3>
+                    <p>Absolutely. I'm happy to discuss your goals and answer any questions before you commit to a training session. Contact me to arrange a phone consultation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Training?</h2>
+                <p>
+                    Take the first step toward improving your soccer skills. Contact me today to discuss your goals and schedule your first session.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('contact')">
+                        Send Message
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='book-now.html'">
+                        Book Directly
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Coach Zach</h3>
+                    <p>
+                        Private soccer training and coaching services in Gilbert, Queen Creek, and Chandler, Arizona.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p>Email: ztproctor@gmail.com</p>
+                        <p>Phone: (480) 238-0040</p>
+                        <p>Areas: Gilbert, Queen Creek, Chandler</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <p>1-on-1 Training</p>
+                        <p>Small Group Training</p>
+                        <p>Skill Assessment</p>
+                        <p>All Ages Welcome</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Coach Zach Soccer Training. Not affiliated with local soccer clubs or organizations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

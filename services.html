@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Training Services - 1-on-1 & Group Sessions | Coach Zach Gilbert, Queen Creek, Chandler</title>
+    <meta name="description" content="Comprehensive soccer training services including 1-on-1 sessions, small group training, skill assessments, and training packages. Available in Gilbert, Queen Creek, and Chandler, Arizona for all ages.">
+    <meta name="keywords" content="soccer training services, 1-on-1 soccer coaching, group soccer lessons, soccer skill assessment, soccer training packages, Gilbert soccer training, Queen Creek soccer lessons">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Soccer Training Services - 1-on-1 & Group Sessions | Coach Zach">
+    <meta property="og:description" content="Comprehensive soccer training services including 1-on-1 sessions, small group training, skill assessments, and training packages in Gilbert, Queen Creek, and Chandler.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Soccer Training Services",
+        "description": "Comprehensive soccer training services for all ages including 1-on-1 sessions, small group training, skill assessments, and training packages",
+        "provider": {
+            "@type": "Person",
+            "name": "Coach Zach"
+        },
+        "serviceType": "Soccer Training",
+        "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "33.3528",
+                "longitude": "-111.7890"
+            },
+            "geoRadius": "20000"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Soccer Training Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "1-on-1 Training Session"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Small Group Training"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Skill Assessment"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Coach Zach</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="book-now.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Soccer Training <span class="highlight">Services</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Comprehensive training programs designed to develop skills, build confidence, and improve game performance for players of all ages.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="window.location.href='book-now.html'">
+                        Book Your Session
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='contact.html'">
+                        Get Pricing Information
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Training Services</h2>
+                <p class="section-subtitle">
+                    Choose the training option that best fits your goals and schedule. All sessions are customized to your player's needs.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚽</div>
+                    <h3>1-on-1 Training</h3>
+                    <p>
+                        Personalized sessions focused on individual skill development, 
+                        technique improvement, and specific areas of growth.
+                    </p>
+                    <ul>
+                        <li>Technical skills development</li>
+                        <li>Individual coaching attention</li>
+                        <li>Customized training plans</li>
+                        <li>Progress tracking</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price">$75</span>
+                        <span class="duration">per 60-minute session</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Small Group Training</h3>
+                    <p>
+                        Group sessions with 2-5 players, perfect for friends, teammates, 
+                        or players at similar skill levels.
+                    </p>
+                    <ul>
+                        <li>Team dynamics and communication</li>
+                        <li>Competitive training environment</li>
+                        <li>Reduced cost per player</li>
+                        <li>Peer learning opportunities</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price">$50</span>
+                        <span class="duration">per 90-minute session</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Skill Assessment</h3>
+                    <p>
+                        Comprehensive evaluation of current abilities with detailed 
+                        feedback and improvement recommendations.
+                    </p>
+                    <ul>
+                        <li>Technical skill evaluation</li>
+                        <li>Performance analysis</li>
+                        <li>Development roadmap</li>
+                        <li>Written assessment report</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price">$60</span>
+                        <span class="duration">per 45-minute session</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Training Packages</h2>
+                <p class="section-subtitle">
+                    Save money and commit to your development with our training packages. 
+                    Perfect for players serious about improving their game.
+                </p>
+            </div>
+            
+            <div class="packages-grid">
+                <div class="package-card featured">
+                    <div class="package-header">
+                        <h3>6-Pack of Lessons</h3>
+                        <div class="package-badge">Most Popular</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price">$400</span>
+                        <span class="original-price">$450</span>
+                        <span class="savings">Save $50</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>6 individual training sessions</li>
+                        <li>60 minutes each session</li>
+                        <li>Personalized training plan</li>
+                        <li>Progress tracking</li>
+                        <li>Flexible scheduling</li>
+                        <li>Valid for 3 months</li>
+                    </ul>
+                    <button class="btn-primary" onclick="window.location.href='book-now.html'">
+                        Book 6-Pack
+                    </button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>10-Pack of Lessons</h3>
+                        <div class="package-badge">Best Value</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price">$650</span>
+                        <span class="original-price">$750</span>
+                        <span class="savings">Save $100</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>10 individual training sessions</li>
+                        <li>60 minutes each session</li>
+                        <li>Comprehensive training plan</li>
+                        <li>Detailed progress reports</li>
+                        <li>Priority scheduling</li>
+                        <li>Valid for 6 months</li>
+                    </ul>
+                    <button class="btn-secondary" onclick="window.location.href='book-now.html'">
+                        Book 10-Pack
+                    </button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Group Training Package</h3>
+                        <div class="package-badge">Team Building</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price">$300</span>
+                        <span class="original-price">$350</span>
+                        <span class="savings">Save $50</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>6 group training sessions</li>
+                        <li>90 minutes each session</li>
+                        <li>2-5 players per group</li>
+                        <li>Team skill development</li>
+                        <li>Group dynamics focus</li>
+                        <li>Valid for 3 months</li>
+                    </ul>
+                    <button class="btn-secondary" onclick="window.location.href='book-now.html'">
+                        Book Group Package
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="included">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What's Included in Every Session</h2>
+                <p class="section-subtitle">
+                    Every training session is designed to maximize your development and enjoyment of the game.
+                </p>
+            </div>
+            
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-icon">📋</div>
+                    <h3>Personalized Training Plan</h3>
+                    <p>Customized sessions based on your current skill level and goals</p>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-icon">🎯</div>
+                    <h3>Skill Development</h3>
+                    <p>Focus on technical skills, game intelligence, and confidence building</p>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Regular assessment and feedback on your development</p>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-icon">💬</div>
+                    <h3>Communication</h3>
+                    <p>Clear communication about goals, progress, and next steps</p>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-icon">⚽</div>
+                    <h3>Equipment Provided</h3>
+                    <p>All necessary training equipment and materials included</p>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-icon">📱</div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>Convenient scheduling options to fit your busy lifestyle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Training?</h2>
+                <p>
+                    Choose the service that best fits your needs and take the first step toward improving your soccer skills.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="window.location.href='book-now.html'">
+                        Book Your Session
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='contact.html'">
+                        Have Questions?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Coach Zach</h3>
+                    <p>
+                        Private soccer training and coaching services in Gilbert, Queen Creek, and Chandler, Arizona.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p>Email: ztproctor@gmail.com</p>
+                        <p>Phone: (480) 238-0040</p>
+                        <p>Areas: Gilbert, Queen Creek, Chandler</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <p>1-on-1 Training</p>
+                        <p>Small Group Training</p>
+                        <p>Skill Assessment</p>
+                        <p>All Ages Welcome</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Coach Zach Soccer Training. Not affiliated with local soccer clubs or organizations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

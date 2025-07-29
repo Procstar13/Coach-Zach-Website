@@ -335,40 +335,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add CSS for animations
-const animationCSS = `
-    section {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    section.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .service-card {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .services-grid:hover .service-card {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .service-card:nth-child(1) { transition-delay: 0.1s; }
-    .service-card:nth-child(2) { transition-delay: 0.2s; }
-    .service-card:nth-child(3) { transition-delay: 0.3s; }
-`;
-
-// Inject animation CSS
-const animationStyle = document.createElement('style');
-animationStyle.textContent = animationCSS;
-document.head.appendChild(animationStyle);
-
 // Calendly fallback detection
 document.addEventListener('DOMContentLoaded', function() {
     // Check if Calendly widget loads properly

@@ -32,6 +32,11 @@
       "destination": "/api-hello.js"
     }
   ],
+  "functions": {
+    "api-hello.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

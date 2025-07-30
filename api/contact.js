@@ -72,7 +72,7 @@ export default async function handler(req, res) {
             </ul>
           </div>
           
-          <p>If you have any urgent questions, feel free to call me directly at <strong>(480) 238-0040</strong>.</p>
+          
           
           <p>Best regards,<br>
           <strong>Coach Zach</strong></p>

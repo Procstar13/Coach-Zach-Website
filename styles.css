@@ -649,6 +649,45 @@ body {
     }
 }
 
+/* Contact Sidebar Styles */
+.contact-sidebar {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.contact-sidebar-content h3 {
+    color: #16a34a;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.contact-sidebar-content h3:first-child {
+    margin-top: 0;
+}
+
+.contact-sidebar-content h3:not(:first-child) {
+    margin-top: 2rem;
+}
+
+.contact-sidebar-content ul,
+.contact-sidebar-content ol {
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+}
+
+.contact-sidebar-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.contact-sidebar-content li:last-child {
+    margin-bottom: 0;
+}
+
 /* Smooth scrolling for older browsers */
 @media (prefers-reduced-motion: no-preference) {
     html {

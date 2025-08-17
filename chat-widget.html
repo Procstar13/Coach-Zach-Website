@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Test</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #16a34a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Chat Widget Test Page</h1>
+        <p>This page is for testing the chat widget functionality. The chat bubble should appear in the bottom-right corner.</p>
+    </div>
+
+    <!-- Chat Widget HTML -->
+    <div id="chat-widget" class="chat-widget">
+        <!-- Chat Bubble -->
+        <div id="chat-bubble" class="chat-bubble">
+            <span class="chat-icon">⚽</span>
+            <span class="chat-text">Text Coach Zach!</span>
+        </div>
+
+        <!-- Chat Interface -->
+        <div id="chat-interface" class="chat-interface">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-title">
+                    <span class="chat-icon">⚽</span>
+                    <span>Coach Zach</span>
+                </div>
+                <button id="close-chat" class="close-btn">×</button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="chat-messages" class="chat-messages">
+                <div class="message coach-message">
+                    <div class="message-content">
+                        <p>Hi 👋 I'm Coach Zach. Before we connect, can you share a few quick details?</p>
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+
+            <!-- Chat Form -->
+            <div id="chat-form" class="chat-form">
+                <form id="lead-form">
+                    <div class="form-group">
+                        <label for="parent-name">Parent/Player Name *</label>
+                        <input type="text" id="parent-name" name="parentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="player-age">Player Age *</label>
+                        <input type="number" id="player-age" name="playerAge" min="3" max="18" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inquiry-type">Inquiry Type *</label>
+                        <select id="inquiry-type" name="inquiryType" required>
+                            <option value="">Select inquiry type</option>
+                            <option value="1-on-1 Training">1-on-1 Training</option>
+                            <option value="Group Training">Group Training</option>
+                            <option value="Pricing">Pricing</option>
+                            <option value="Skill Assessment">Skill Assessment</option>
+                            <option value="General Question">General Question</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-phone">Your Phone Number (optional)</label>
+                        <input type="tel" id="customer-phone" name="customerPhone" placeholder="(480) 555-1234">
+                    </div>
+                    
+
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading" style="display: none;">Sending...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget CSS -->
+    <style>
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Chat Bubble */
+        .chat-bubble {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 200px;
+        }
+
+        .chat-bubble:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+        }
+
+        .chat-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .chat-text {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            max-height: 600px; /* Increased height to accommodate form */
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .chat-interface.open {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0; /* Prevent header from shrinking */
+        }
+
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Chat Messages */
+        .chat-messages {
+            padding: 20px;
+            max-height: 150px; /* Reduced to make room for form */
+            overflow-y: auto;
+            flex-shrink: 0; /* Prevent messages from shrinking */
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-content {
+            background: #f3f4f6;
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .coach-message .message-content {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .customer-message .message-content {
+            background: #dbeafe;
+            color: #1e40af;
+            margin-left: auto;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .customer-message .message-time {
+            text-align: left;
+        }
+
+        /* Chat Form */
+        .chat-form {
+            padding: 20px;
+            border-top: 1px solid #e5e7eb;
+            overflow-y: auto; /* Add scrolling to form area */
+            max-height: 300px; /* Limit form height */
+            flex: 1; /* Allow form to take remaining space */
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: white;
+            border: none;
+            padding: 14px 20px; /* Slightly increased padding */
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 8px; /* Add margin to separate from form fields */
+            flex-shrink: 0; /* Prevent button from shrinking */
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Waiting State */
+        .waiting-state {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .waiting-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            animation: pulse 2s infinite;
+        }
+
+        .waiting-state h3 {
+            color: #16a34a;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .waiting-state p {
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .waiting-state p:last-child {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #dcfce7;
+            color: #166534;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .chat-interface {
+                width: calc(100vw - 40px);
+                right: -20px;
+                bottom: 100px;
+            }
+            
+            .chat-bubble {
+                min-width: 180px;
+                padding: 14px 18px;
+            }
+        }
+
+        /* Animation for new messages */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            animation: slideIn 0.3s ease;
+        }
+    </style>
+
+    <!-- Chat Widget JavaScript -->
+    <script>
+        class ChatWidget {
+            constructor() {
+                this.isOpen = false;
+                this.messages = [];
+                this.lastSubmissionTime = 0;
+                this.rateLimitMs = 30000; // 30 seconds
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.loadChatHistory();
+                this.addWelcomeMessage();
+            }
+
+            bindEvents() {
+                // Chat bubble click
+                document.getElementById('chat-bubble').addEventListener('click', () => {
+                    this.toggleChat();
+                });
+
+                // Close button
+                document.getElementById('close-chat').addEventListener('click', () => {
+                    this.closeChat();
+                });
+
+                // Form submission
+                document.getElementById('lead-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleFormSubmission();
+                });
+
+                // Close chat when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.chat-widget')) {
+                        this.closeChat();
+                    }
+                });
+            }
+
+            toggleChat() {
+                if (this.isOpen) {
+                    this.closeChat();
+                } else {
+                    this.openChat();
+                }
+            }
+
+            openChat() {
+                this.isOpen = true;
+                document.getElementById('chat-interface').classList.add('open');
+                document.getElementById('chat-bubble').style.display = 'none';
+            }
+
+            closeChat() {
+                this.isOpen = false;
+                document.getElementById('chat-interface').classList.remove('open');
+                document.getElementById('chat-bubble').style.display = 'flex';
+            }
+
+            addWelcomeMessage() {
+                const welcomeMessage = {
+                    id: 'welcome',
+                    from: 'coach',
+                    text: 'Hi 👋 I\'m Coach Zach. Before we connect, can you share a few quick details?',
+                    timestamp: new Date().toISOString()
+                };
+                this.messages.push(welcomeMessage);
+                this.displayMessage(welcomeMessage);
+            }
+
+            async handleFormSubmission() {
+                // Rate limiting
+                const now = Date.now();
+                if (now - this.lastSubmissionTime < this.rateLimitMs) {
+                    this.showError('Please wait a moment before sending another message.');
+                    return;
+                }
+
+                const form = document.getElementById('lead-form');
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // Validate required fields
+                if (!data.parentName || !data.playerAge || !data.inquiryType) {
+                    this.showError('Please fill in all required fields.');
+                    return;
+                }
+
+                // Show loading state
+                this.setLoadingState(true);
+
+                try {
+                    // Add customer message to chat
+                    const customerMessage = {
+                        id: Date.now().toString(),
+                        from: 'customer',
+                        text: `Submitted: ${data.inquiryType} for ${data.parentName} (Age: ${data.playerAge})`,
+                        timestamp: new Date().toISOString()
+                    };
+                    this.messages.push(customerMessage);
+                    this.displayMessage(customerMessage);
+
+                    // Send SMS via API
+                    const response = await fetch('/api/send-sms', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        this.showSuccess('✅ Message sent! Coach Zach will text you soon.');
+                        this.saveChatHistory();
+                        form.reset();
+                    } else {
+                        throw new Error(result.error || 'Failed to send message');
+                    }
+
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    this.showError('Failed to send message. Please try again.');
+                } finally {
+                    this.setLoadingState(false);
+                }
+
+                this.lastSubmissionTime = now;
+            }
+
+            setLoadingState(loading) {
+                const submitBtn = document.querySelector('.submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoading = submitBtn.querySelector('.btn-loading');
+
+                if (loading) {
+                    submitBtn.disabled = true;
+                    btnText.style.display = 'none';
+                    btnLoading.style.display = 'inline';
+                } else {
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                }
+            }
+
+            showSuccess(message) {
+                const successDiv = document.createElement('div');
+                successDiv.className = 'success-message show';
+                successDiv.textContent = message;
+                
+                const form = document.getElementById('lead-form');
+                form.parentNode.insertBefore(successDiv, form);
+
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    successDiv.remove();
+                }, 5000);
+            }
+
+            showError(message) {
+                // For now, just log the error
+                // You could add a more sophisticated error display
+                console.error(message);
+                alert(message);
+            }
+
+            displayMessage(message) {
+                const messagesContainer = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${message.from}-message`;
+                
+                messageDiv.innerHTML = `
+                    <div class="message-content">
+                        <p>${message.text}</p>
+                    </div>
+                    <div class="message-time">${this.formatTime(message.timestamp)}</div>
+                `;
+
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // Play notification sound for coach messages
+                if (message.from === 'coach' && message.id !== 'welcome') {
+                    this.playNotificationSound();
+                }
+            }
+
+            formatTime(timestamp) {
+                const date = new Date(timestamp);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMs / 3600000);
+
+                if (diffMins < 1) return 'Just now';
+                if (diffMins < 60) return `${diffMins}m ago`;
+                if (diffHours < 24) return `${diffHours}h ago`;
+                return date.toLocaleDateString();
+            }
+
+            playNotificationSound() {
+                // Create a simple notification sound
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                oscillator.frequency.setValueAtTime(600, audioContext.currentTime + 0.1);
+
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.2);
+            }
+
+            saveChatHistory() {
+                try {
+                    sessionStorage.setItem('chatHistory', JSON.stringify(this.messages));
+                } catch (error) {
+                    console.error('Failed to save chat history:', error);
+                }
+            }
+
+            loadChatHistory() {
+                try {
+                    const saved = sessionStorage.getItem('chatHistory');
+                    if (saved) {
+                        this.messages = JSON.parse(saved);
+                        // Clear existing messages and redisplay
+                        document.getElementById('chat-messages').innerHTML = '';
+                        this.messages.forEach(msg => this.displayMessage(msg));
+                    }
+                } catch (error) {
+                    console.error('Failed to load chat history:', error);
+                }
+            }
+
+            // Method to add incoming messages from webhook
+            addIncomingMessage(text) {
+                const message = {
+                    id: Date.now().toString(),
+                    from: 'coach',
+                    text: text,
+                    timestamp: new Date().toISOString()
+                };
+                this.messages.push(message);
+                this.displayMessage(message);
+                this.saveChatHistory();
+            }
+        }
+
+        // Initialize chat widget when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.chatWidget = new ChatWidget();
+        });
+    </script>
+</body>
+</html>

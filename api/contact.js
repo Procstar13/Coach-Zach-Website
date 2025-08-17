@@ -73,7 +73,6 @@ export default async function handler(req, res) {
           </div>
           
           
-          
           <p>Best regards,<br>
           <strong>Coach Zach</strong></p>
           

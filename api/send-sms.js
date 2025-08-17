@@ -14,7 +14,8 @@ export default async function handler(req, res) {
       parentName, 
       playerAge, 
       inquiryType, 
-      customerPhone
+      customerPhone,
+      message
     } = req.body;
 
     // Validate required fields
@@ -25,13 +26,13 @@ export default async function handler(req, res) {
     // Generate a unique session ID
     const sessionId = `chat_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    // Format the SMS message
-    const smsText = `New Soccer Training Lead
+    // Format the SMS message in compliance format
+    const smsText = `New Training Inquiry:
 Name: ${parentName}
-Age: ${playerAge}
-Inquiry: ${inquiryType}
 Phone: ${customerPhone || 'Not provided'}
-Source: Website Chat
+Message: ${inquiryType} for ${parentName} (Age: ${playerAge})${message ? ` - ${message}` : ''}
+
+(Opted in via website chat form)
 
 Reply to this message to continue the conversation.`;
 

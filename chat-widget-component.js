@@ -79,6 +79,19 @@ class ChatWidget {
                                 <input type="tel" id="customer-phone" name="customerPhone" placeholder="(480) 555-1234">
                             </div>
                             
+                            <div class="form-group">
+                                <label for="message">Additional Message (optional)</label>
+                                <textarea id="message" name="message" rows="2" placeholder="Tell me about your goals, experience level, or any specific questions..."></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="opt-in" name="optIn" required>
+                                    <span class="checkmark"></span>
+                                    I consent to receive SMS messages from Coach Zach regarding my soccer training inquiry. I understand that message and data rates may apply.
+                                </label>
+                            </div>
+                            
                             <button type="submit" class="submit-btn">
                                 <span class="btn-text">Send Message</span>
                                 <span class="btn-loading" style="display: none;">Sending...</span>
@@ -166,9 +179,9 @@ class ChatWidget {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // Validate required fields
-        if (!data.parentName || !data.playerAge || !data.inquiryType) {
-            this.showError('Please fill in all required fields.');
+        // Validate required fields including opt-in
+        if (!data.parentName || !data.playerAge || !data.inquiryType || !data.optIn) {
+            this.showError('Please fill in all required fields and consent to receive SMS messages.');
             return;
         }
 

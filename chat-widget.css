@@ -184,6 +184,37 @@
     box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
 }
 
+/* Checkbox Styling */
+.checkbox-group {
+    margin-bottom: 20px;
+}
+
+.checkbox-label {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #374151;
+    font-weight: 400;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.checkbox-label .checkmark {
+    display: none; /* We'll use the default checkbox for now */
+}
+
+.checkbox-label:hover {
+    color: #16a34a;
+}
+
 .submit-btn {
     width: 100%;
     background: linear-gradient(135deg, #16a34a, #22c55e);
@@ -286,6 +317,10 @@
     
     .chat-form {
         max-height: 250px; /* Smaller on mobile */
+    }
+    
+    .checkbox-label {
+        font-size: 12px;
     }
 }
 

@@ -27,12 +27,14 @@ export default async function handler(req, res) {
     const sessionId = `chat_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     // Format the SMS message in compliance format
-    const smsText = `New Training Inquiry:
+    const smsText = `Hi ${parentName}, thanks for contacting Coach Zach.
+You opted in via our website to receive SMS about soccer training.
+Reply STOP to unsubscribe, HELP for help.
+
+New Training Inquiry:
 Name: ${parentName}
 Phone: ${customerPhone || 'Not provided'}
 Message: ${inquiryType} for ${parentName} (Age: ${playerAge})${message ? ` - ${message}` : ''}
-
-(Opted in via website chat form)
 
 Reply to this message to continue the conversation.`;
 

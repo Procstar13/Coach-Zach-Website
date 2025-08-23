@@ -88,7 +88,7 @@ class ChatWidget {
                                 <label class="checkbox-label">
                                     <input type="checkbox" id="opt-in" name="optIn" required>
                                     <span class="checkmark"></span>
-                                    I consent to receive SMS messages from Coach Zach regarding my soccer training inquiry. I understand that message and data rates may apply.
+                                    I consent to receive SMS messages from Coach Zach regarding my soccer training inquiry. I understand that message and data rates may apply. Reply STOP to opt-out at any time.
                                 </label>
                             </div>
                             

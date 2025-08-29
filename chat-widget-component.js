@@ -86,10 +86,24 @@ class ChatWidget {
                             
                             <div class="form-group checkbox-group">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="opt-in" name="optIn" required>
+                                    <input type="checkbox" id="marketing-consent" name="marketingConsent" required>
                                     <span class="checkmark"></span>
-                                    I consent to receive SMS messages from Coach Zach regarding my soccer training inquiry. I understand that message and data rates may apply. Reply STOP to opt-out at any time.
+                                    I consent to receive marketing text messages from Coach Zach at the phone number provided. Frequency may vary. Message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
                                 </label>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="non-marketing-consent" name="nonMarketingConsent" required>
+                                    <span class="checkmark"></span>
+                                    I consent to receive non-marketing text messages from Coach Zach about my order updates, appointment reminders etc. Message & data rates may apply.
+                                </label>
+                            </div>
+                            
+                            <div class="form-group terms-links">
+                                <a href="/privacy-policy" target="_blank" class="terms-link">Privacy Policy</a>
+                                <span class="terms-separator">&</span>
+                                <a href="/terms-of-service" target="_blank" class="terms-link">Terms of Service</a>
                             </div>
                             
                             <button type="submit" class="submit-btn">
@@ -179,9 +193,9 @@ class ChatWidget {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // Validate required fields including opt-in
-        if (!data.parentName || !data.playerAge || !data.inquiryType || !data.optIn) {
-            this.showError('Please fill in all required fields and consent to receive SMS messages.');
+        // Validate required fields including both consent checkboxes
+        if (!data.parentName || !data.playerAge || !data.inquiryType || !data.marketingConsent || !data.nonMarketingConsent) {
+            this.showError('Please fill in all required fields and consent to both SMS message types.');
             return;
         }
 

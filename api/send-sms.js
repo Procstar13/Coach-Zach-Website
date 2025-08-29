@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     // Format the SMS message in compliance format
     const smsText = `Hi ${parentName}, thanks for contacting Coach Zach.
-You opted in via our website to receive SMS about soccer training.
+You have consented to receive both marketing and non-marketing SMS messages.
 Reply STOP to unsubscribe, HELP for help.
 
 New Training Inquiry:

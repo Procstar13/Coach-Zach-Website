@@ -101,9 +101,9 @@ class ChatWidget {
                             </div>
                             
                             <div class="form-group terms-links">
-                                <a href="/privacy-policy" target="_blank" class="terms-link">Privacy Policy</a>
+                                <a href="privacy-policy.html" target="_blank" class="terms-link">Privacy Policy</a>
                                 <span class="terms-separator">&</span>
-                                <a href="/terms-of-service" target="_blank" class="terms-link">Terms of Service</a>
+                                <a href="terms-of-service.html" target="_blank" class="terms-link">Terms of Service</a>
                             </div>
                             
                             <button type="submit" class="submit-btn">

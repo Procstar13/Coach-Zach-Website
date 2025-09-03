@@ -4,165 +4,259 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Coach Zach Soccer Training</title>
+    <meta name="description" content="Privacy Policy for Coach Zach Soccer Training. Learn how we collect, use, and protect your personal information for soccer training services in Gilbert, Queen Creek, and Chandler, Arizona.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        .legal-page {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+        
+        .legal-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f9fafb;
+            padding: 2rem;
         }
         
-        .container {
+        .legal-content {
             background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
         }
         
-        h1 {
+        .legal-title {
             color: #16a34a;
-            border-bottom: 2px solid #16a34a;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
         
-        h2 {
+        .legal-section h2 {
             color: #374151;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
         
-        h3 {
+        .legal-section h3 {
             color: #4b5563;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        
-        p, ul, li {
-            margin-bottom: 15px;
-        }
-        
-        ul {
-            padding-left: 20px;
-        }
-        
-        .highlight {
-            background-color: #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #f59e0b;
-            margin: 20px 0;
-        }
-        
-        .contact-info {
-            background-color: #ecfdf5;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #16a34a;
-            margin: 20px 0;
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            color: #16a34a;
-            text-decoration: none;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
             font-weight: 500;
         }
         
-        .back-link:hover {
-            text-decoration: underline;
+        .legal-section p, .legal-section ul, .legal-section li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .legal-section ul {
+            padding-left: 1.5rem;
+        }
+        
+        .legal-highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legal-contact-info {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #16a34a;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legal-back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 2rem;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #16a34a;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .legal-back-link:hover {
+            background-color: #16a34a;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .legal-back-link::before {
+            content: "←";
+            margin-right: 0.5rem;
+        }
+        
+        .last-updated {
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 1rem;
+            }
+            
+            .legal-content {
+                padding: 2rem;
+            }
+            
+            .legal-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <p><strong>Last updated:</strong> December 2024</p>
-        
-        <h2>Introduction</h2>
-        <p>Coach Zach Soccer Training ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our soccer training services and website.</p>
-        
-        <h2>Information We Collect</h2>
-        <h3>Personal Information</h3>
-        <ul>
-            <li>Name and contact information (email, phone number)</li>
-            <li>Player age and training preferences</li>
-            <li>Inquiry details and messages</li>
-        </ul>
-        
-        <h3>Communication Data</h3>
-        <ul>
-            <li>SMS messages and chat conversations</li>
-            <li>Email communications</li>
-            <li>Training session scheduling information</li>
-        </ul>
-        
-        <h2>How We Use Your Information</h2>
-        <ul>
-            <li>Provide soccer training services and respond to inquiries</li>
-            <li>Send appointment reminders and training updates</li>
-            <li>Communicate about training programs and pricing</li>
-            <li>Improve our services and customer experience</li>
-        </ul>
-        
-        <h2>SMS Communications</h2>
-        <div class="highlight">
-            <p><strong>Important:</strong> We use SMS messaging to communicate about training sessions, appointment reminders, and respond to your inquiries. By providing your phone number and checking the consent boxes, you agree to receive these messages.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1><a href="index.html" style="color: inherit; text-decoration: none;">Coach Zach</a></h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="book-now.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
         </div>
-        
-        <ul>
-            <li><strong>Marketing Messages:</strong> Information about training programs, pricing, and promotional offers</li>
-            <li><strong>Non-Marketing Messages:</strong> Appointment reminders, training updates, and service-related communications</li>
-            <li><strong>Opt-out:</strong> Reply STOP to unsubscribe from SMS messages at any time</li>
-            <li><strong>Help:</strong> Reply HELP for assistance with SMS communications</li>
-        </ul>
-        
-        <h2>Information Sharing and Third Parties</h2>
-        <div class="highlight">
-            <p><strong>We do not sell, rent, or share your personal information, including phone numbers, with third parties for marketing purposes.</strong></p>
+    </nav>
+
+    <div class="legal-page">
+        <div class="legal-container">
+            <div class="legal-content">
+                <h1 class="legal-title">Privacy Policy</h1>
+                <p class="last-updated"><strong>Last updated:</strong> December 2024</p>
+                
+                <div class="legal-section">
+                    <h2>Introduction</h2>
+                    <p>Coach Zach Soccer Training ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our soccer training services and website.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Information We Collect</h2>
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li>Name and contact information (email, phone number)</li>
+                        <li>Player age and training preferences</li>
+                        <li>Inquiry details and messages</li>
+                    </ul>
+                    
+                    <h3>Communication Data</h3>
+                    <ul>
+                        <li>SMS messages and chat conversations</li>
+                        <li>Email communications</li>
+                        <li>Training session scheduling information</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>How We Use Your Information</h2>
+                    <ul>
+                        <li>Provide soccer training services and respond to inquiries</li>
+                        <li>Send appointment reminders and training updates</li>
+                        <li>Communicate about training programs and pricing</li>
+                        <li>Improve our services and customer experience</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>SMS Communications</h2>
+                    <div class="legal-highlight">
+                        <p><strong>Important:</strong> We use SMS messaging to communicate about training sessions, appointment reminders, and respond to your inquiries. By providing your phone number and checking the consent boxes, you agree to receive these messages.</p>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Marketing Messages:</strong> Information about training programs, pricing, and promotional offers</li>
+                        <li><strong>Non-Marketing Messages:</strong> Appointment reminders, training updates, and service-related communications</li>
+                        <li><strong>Opt-out:</strong> Reply STOP to unsubscribe from SMS messages at any time</li>
+                        <li><strong>Help:</strong> Reply HELP for assistance with SMS communications</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Information Sharing and Third Parties</h2>
+                    <div class="legal-highlight">
+                        <p><strong>We do not sell, rent, or share your personal information, including phone numbers, with third parties for marketing purposes.</strong></p>
+                    </div>
+                    
+                    <p>We may share your information only in the following limited circumstances:</p>
+                    <ul>
+                        <li><strong>Service Providers:</strong> With trusted third-party services (like Twilio for SMS delivery) solely to provide our services</li>
+                        <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
+                        <li><strong>Business Transfers:</strong> In connection with a business sale or merger (with notice to you)</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Data Security</h2>
+                    <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Data Retention</h2>
+                    <p>We retain your information only as long as necessary to provide our services and comply with legal obligations. You may request deletion of your data at any time.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Your Rights</h2>
+                    <ul>
+                        <li>Access and review your personal information</li>
+                        <li>Request correction of inaccurate information</li>
+                        <li>Request deletion of your data</li>
+                        <li>Opt-out of marketing communications</li>
+                        <li>Opt-out of SMS messages by replying STOP</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Children's Privacy</h2>
+                    <p>Our services are intended for children under 18 only with parental consent. We collect information about children only with explicit parental permission.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy from time to time. We will notify you of any material changes via email or through our website.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Contact Us</h2>
+                    <div class="legal-contact-info">
+                        <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+                        <p><strong>Coach Zach Soccer Training</strong><br>
+                        Email: ztproctor@gmail.com<br>
+                        Phone: Available through our contact form</p>
+                    </div>
+                </div>
+                
+                <a href="index.html" class="legal-back-link">Back to Home</a>
+            </div>
         </div>
-        
-        <p>We may share your information only in the following limited circumstances:</p>
-        <ul>
-            <li><strong>Service Providers:</strong> With trusted third-party services (like Twilio for SMS delivery) solely to provide our services</li>
-            <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
-            <li><strong>Business Transfers:</strong> In connection with a business sale or merger (with notice to you)</li>
-        </ul>
-        
-        <h2>Data Security</h2>
-        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
-        
-        <h2>Data Retention</h2>
-        <p>We retain your information only as long as necessary to provide our services and comply with legal obligations. You may request deletion of your data at any time.</p>
-        
-        <h2>Your Rights</h2>
-        <ul>
-            <li>Access and review your personal information</li>
-            <li>Request correction of inaccurate information</li>
-            <li>Request deletion of your data</li>
-            <li>Opt-out of marketing communications</li>
-            <li>Opt-out of SMS messages by replying STOP</li>
-        </ul>
-        
-        <h2>Children's Privacy</h2>
-        <p>Our services are intended for children under 18 only with parental consent. We collect information about children only with explicit parental permission.</p>
-        
-        <h2>Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify you of any material changes via email or through our website.</p>
-        
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
-            <p><strong>Coach Zach Soccer Training</strong><br>
-            Email: ztproctor@gmail.com<br>
-            Phone: Available through our contact form</p>
-        </div>
-        
-        <a href="javascript:history.back()" class="back-link">← Back to Previous Page</a>
     </div>
 </body>
 </html>

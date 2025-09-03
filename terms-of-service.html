@@ -4,188 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - Coach Zach Soccer Training</title>
+    <meta name="description" content="Terms of Service for Coach Zach Soccer Training. Learn about our policies, user responsibilities, and service terms for soccer training in Gilbert, Queen Creek, and Chandler, Arizona.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        .legal-page {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+        
+        .legal-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f9fafb;
+            padding: 2rem;
         }
         
-        .container {
+        .legal-content {
             background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
         }
         
-        h1 {
+        .legal-title {
             color: #16a34a;
-            border-bottom: 2px solid #16a34a;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            border-bottom: 3px solid #16a34a;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
         
-        h2 {
+        .legal-section h2 {
             color: #374151;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
         
-        h3 {
+        .legal-section h3 {
             color: #4b5563;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        
-        p, ul, li {
-            margin-bottom: 15px;
-        }
-        
-        ul {
-            padding-left: 20px;
-        }
-        
-        .highlight {
-            background-color: #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #f59e0b;
-            margin: 20px 0;
-        }
-        
-        .important {
-            background-color: #fee2e2;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #dc2626;
-            margin: 20px 0;
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            color: #16a34a;
-            text-decoration: none;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
             font-weight: 500;
         }
         
-        .back-link:hover {
-            text-decoration: underline;
+        .legal-section p, .legal-section ul, .legal-section li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .legal-section ul {
+            padding-left: 1.5rem;
+        }
+        
+        .legal-highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legal-important {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #dc2626;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legal-back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 2rem;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #16a34a;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .legal-back-link:hover {
+            background-color: #16a34a;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .legal-back-link::before {
+            content: "←";
+            margin-right: 0.5rem;
+        }
+        
+        .last-updated {
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .legal-container {
+                padding: 1rem;
+            }
+            
+            .legal-content {
+                padding: 2rem;
+            }
+            
+            .legal-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Terms of Service</h1>
-        <p><strong>Last updated:</strong> December 2024</p>
-        
-        <h2>Agreement to Terms</h2>
-        <p>By accessing and using Coach Zach Soccer Training services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.</p>
-        
-        <h2>Service Description</h2>
-        <p>Coach Zach Soccer Training provides personalized soccer training services including:</p>
-        <ul>
-            <li>1-on-1 training sessions</li>
-            <li>Group training programs</li>
-            <li>Skill assessments and evaluations</li>
-            <li>Training consultation and planning</li>
-        </ul>
-        
-        <h2>User Responsibilities</h2>
-        <h3>Parent/Guardian Responsibilities</h3>
-        <ul>
-            <li>Provide accurate and complete information about the player</li>
-            <li>Ensure the player arrives on time for scheduled sessions</li>
-            <li>Notify us of any health conditions or special needs</li>
-            <li>Provide appropriate equipment and attire for training</li>
-        </ul>
-        
-        <h3>Player Responsibilities</h3>
-        <ul>
-            <li>Follow safety instructions and training guidelines</li>
-            <li>Respect coaches, other players, and equipment</li>
-            <li>Participate actively in training sessions</li>
-            <li>Maintain appropriate behavior during sessions</li>
-        </ul>
-        
-        <h2>Communication and Consent</h2>
-        <div class="highlight">
-            <p><strong>SMS Communications:</strong> By providing your phone number and checking the consent boxes, you agree to receive SMS messages for:</p>
-            <ul>
-                <li>Marketing communications about training programs and offers</li>
-                <li>Non-marketing communications including appointment reminders and training updates</li>
-            </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1><a href="index.html" style="color: inherit; text-decoration: none;">Coach Zach</a></h1>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="book-now.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
         </div>
-        
-        <p><strong>Opt-out Options:</strong></p>
-        <ul>
-            <li>Reply STOP to unsubscribe from all SMS messages</li>
-            <li>Reply HELP for assistance with SMS communications</li>
-            <li>Contact us directly to modify communication preferences</li>
-        </ul>
-        
-        <h2>Payment and Cancellation</h2>
-        <h3>Payment Terms</h3>
-        <ul>
-            <li>Payment is due at the time of service unless otherwise arranged</li>
-            <li>We accept cash, check, and digital payment methods</li>
-            <li>Prices are subject to change with notice</li>
-        </ul>
-        
-        <h3>Cancellation Policy</h3>
-        <ul>
-            <li>24-hour notice required for session cancellations</li>
-            <li>Late cancellations may result in a cancellation fee</li>
-            <li>No-shows will be charged the full session rate</li>
-        </ul>
-        
-        <h2>Liability and Safety</h2>
-        <div class="important">
-            <p><strong>Important:</strong> Participation in soccer training involves inherent risks. While we take all reasonable precautions, you acknowledge that you participate at your own risk.</p>
+    </nav>
+
+    <div class="legal-page">
+        <div class="legal-container">
+            <div class="legal-content">
+                <h1 class="legal-title">Terms of Service</h1>
+                <p class="last-updated"><strong>Last updated:</strong> December 2024</p>
+                
+                <div class="legal-section">
+                    <h2>Agreement to Terms</h2>
+                    <p>By accessing and using Coach Zach Soccer Training services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Service Description</h2>
+                    <p>Coach Zach Soccer Training provides personalized soccer training services including:</p>
+                    <ul>
+                        <li>1-on-1 training sessions</li>
+                        <li>Group training programs</li>
+                        <li>Skill assessments and evaluations</li>
+                        <li>Training consultation and planning</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>User Responsibilities</h2>
+                    <h3>Parent/Guardian Responsibilities</h3>
+                    <ul>
+                        <li>Provide accurate and complete information about the player</li>
+                        <li>Ensure the player arrives on time for scheduled sessions</li>
+                        <li>Notify us of any health conditions or special needs</li>
+                        <li>Provide appropriate equipment and attire for training</li>
+                    </ul>
+                    
+                    <h3>Player Responsibilities</h3>
+                    <ul>
+                        <li>Follow safety instructions and training guidelines</li>
+                        <li>Respect coaches, other players, and equipment</li>
+                        <li>Participate actively in training sessions</li>
+                        <li>Maintain appropriate behavior during sessions</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Communication and Consent</h2>
+                    <div class="legal-highlight">
+                        <p><strong>SMS Communications:</strong> By providing your phone number and checking the consent boxes, you agree to receive SMS messages for:</p>
+                        <ul>
+                            <li>Marketing communications about training programs and offers</li>
+                            <li>Non-marketing communications including appointment reminders and training updates</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>Opt-out Options:</strong></p>
+                    <ul>
+                        <li>Reply STOP to unsubscribe from all SMS messages</li>
+                        <li>Reply HELP for assistance with SMS communications</li>
+                        <li>Contact us directly to modify communication preferences</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Payment and Cancellation</h2>
+                    <h3>Payment Terms</h3>
+                    <ul>
+                        <li>Payment is due at the time of service unless otherwise arranged</li>
+                        <li>We accept cash, check, and digital payment methods</li>
+                        <li>Prices are subject to change with notice</li>
+                    </ul>
+                    
+                    <h3>Cancellation Policy</h3>
+                    <ul>
+                        <li>24-hour notice required for session cancellations</li>
+                        <li>Late cancellations may result in a cancellation fee</li>
+                        <li>No-shows will be charged the full session rate</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Liability and Safety</h2>
+                    <div class="legal-important">
+                        <p><strong>Important:</strong> Participation in soccer training involves inherent risks. While we take all reasonable precautions, you acknowledge that you participate at your own risk.</p>
+                    </div>
+                    
+                    <ul>
+                        <li>We are not liable for injuries sustained during training</li>
+                        <li>Players should have appropriate health insurance</li>
+                        <li>We reserve the right to refuse service for safety concerns</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Intellectual Property</h2>
+                    <p>All training materials, methods, and content are the property of Coach Zach Soccer Training and may not be reproduced or distributed without permission.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Privacy and Data Protection</h2>
+                    <p>Your privacy is important to us. Please review our <a href="privacy-policy.html" style="color: #16a34a; text-decoration: underline;">Privacy Policy</a> for details on how we collect, use, and protect your information.</p>
+                    
+                    <div class="legal-highlight">
+                        <p><strong>Data Protection:</strong> We do not sell, rent, or share your personal information, including phone numbers, with third parties for marketing purposes.</p>
+                    </div>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Termination</h2>
+                    <p>We reserve the right to terminate services for:</p>
+                    <ul>
+                        <li>Violation of these terms</li>
+                        <li>Inappropriate behavior</li>
+                        <li>Non-payment of fees</li>
+                        <li>Safety concerns</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Changes to Terms</h2>
+                    <p>We may modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of modified terms.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Governing Law</h2>
+                    <p>These terms are governed by the laws of the state where services are provided. Any disputes will be resolved through appropriate legal channels.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>Contact Information</h2>
+                    <p>For questions about these Terms of Service, please contact us:</p>
+                    <p><strong>Coach Zach Soccer Training</strong><br>
+                    Email: ztproctor@gmail.com<br>
+                    Phone: Available through our contact form</p>
+                </div>
+                
+                <a href="index.html" class="legal-back-link">Back to Home</a>
+            </div>
         </div>
-        
-        <ul>
-            <li>We are not liable for injuries sustained during training</li>
-            <li>Players should have appropriate health insurance</li>
-            <li>We reserve the right to refuse service for safety concerns</li>
-        </ul>
-        
-        <h2>Intellectual Property</h2>
-        <p>All training materials, methods, and content are the property of Coach Zach Soccer Training and may not be reproduced or distributed without permission.</p>
-        
-        <h2>Privacy and Data Protection</h2>
-        <p>Your privacy is important to us. Please review our <a href="/privacy-policy" style="color: #16a34a;">Privacy Policy</a> for details on how we collect, use, and protect your information.</p>
-        
-        <div class="highlight">
-            <p><strong>Data Protection:</strong> We do not sell, rent, or share your personal information, including phone numbers, with third parties for marketing purposes.</p>
-        </div>
-        
-        <h2>Termination</h2>
-        <p>We reserve the right to terminate services for:</p>
-        <ul>
-            <li>Violation of these terms</li>
-            <li>Inappropriate behavior</li>
-            <li>Non-payment of fees</li>
-            <li>Safety concerns</li>
-        </ul>
-        
-        <h2>Changes to Terms</h2>
-        <p>We may modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of modified terms.</p>
-        
-        <h2>Governing Law</h2>
-        <p>These terms are governed by the laws of the state where services are provided. Any disputes will be resolved through appropriate legal channels.</p>
-        
-        <h2>Contact Information</h2>
-        <p>For questions about these Terms of Service, please contact us:</p>
-        <p><strong>Coach Zach Soccer Training</strong><br>
-        Email: ztproctor@gmail.com<br>
-        Phone: Available through our contact form</p>
-        
-        <a href="javascript:history.back()" class="back-link">← Back to Previous Page</a>
     </div>
 </body>
 </html>

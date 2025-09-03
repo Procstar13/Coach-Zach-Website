@@ -576,6 +576,51 @@ body {
     font-size: 0.875rem;
 }
 
+.footer-legal {
+    margin-bottom: 1rem;
+}
+
+.legal-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.legal-link:hover {
+    color: #16a34a;
+    text-decoration: underline;
+}
+
+.legal-separator {
+    color: #6b7280;
+    margin: 0 0.5rem;
+    font-size: 0.875rem;
+}
+
+.form-legal-notice {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.form-legal-notice p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-align: center;
+    margin: 0;
+}
+
+.form-legal-notice .legal-link {
+    color: #16a34a;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.form-legal-notice .legal-link:hover {
+    color: #15803d;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
